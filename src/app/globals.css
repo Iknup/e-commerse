@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+.color-boxes-container::-webkit-scrollbar {
+  display: none;
+}
+
+.color-boxes-container {
+  display: flex;
+  overflow-x: auto;
+  background: linear-gradient(transparent, white);
+}
+
+.detail-button {
+  @apply border-b-[2px] pt-1 pb-2 flex justify-between w-full;
+}
+
+body {
+}
