@@ -44,7 +44,7 @@ const ITEM_DATA: {
 
 const Page = () => {
   const colorBoxes: JSX.Element[] = ITEM_DATA.color.map((color) => {
-    return <ColorBox color={color} />;
+    return <ColorBox key={color} color={color} />;
   });
 
   return (
