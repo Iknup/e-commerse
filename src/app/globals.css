@@ -30,7 +30,7 @@
 }
 
 .detail-button {
-  @apply border-b-[2px] pt-1 pb-2 flex justify-between w-full;
+  @apply pt-1 pb-2 flex justify-between w-full;
 }
 
 body {

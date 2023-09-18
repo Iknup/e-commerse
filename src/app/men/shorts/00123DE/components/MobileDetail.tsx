@@ -12,7 +12,7 @@ const MobileDetail = ({ sizes }: { sizes: string[] }) => {
 
   return (
     <div className='flex flex-col text-lg font-semibold lg:hidden'>
-      <div>
+      <div className='border-b-[2px]'>
         <button
           onClick={() => {
             setShowReview(!showReview);
@@ -24,7 +24,7 @@ const MobileDetail = ({ sizes }: { sizes: string[] }) => {
         </button>
         {showReview && <Review />}
       </div>
-      <div>
+      <div className='border-b-[2px]'>
         <button
           onClick={() => {
             setShowDescription(!showDescription);
@@ -36,7 +36,7 @@ const MobileDetail = ({ sizes }: { sizes: string[] }) => {
         </button>
         {showDescription && <Description />}
       </div>
-      <div>
+      <div className='border-b-[2px]'>
         <button
           onClick={() => {
             setShowSize(!showSize);
