@@ -24,6 +24,9 @@
   display: flex;
   overflow-x: auto;
   background: linear-gradient(transparent, white);
+  height: 40px;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
 .detail-button {

@@ -2,8 +2,8 @@ import Link from 'next/link';
 
 const Navbar = () => {
   return (
-    <nav>
-      <div className='max-w-screen flex justify-between items-center lg:hidden'>
+    <nav className='sticky'>
+      <div className='max-w-screen mx-2 mt-2 flex justify-between items-center  lg:hidden'>
         <button>
           <svg
             xmlns='http://www.w3.org/2000/svg'

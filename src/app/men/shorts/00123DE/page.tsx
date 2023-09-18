@@ -52,10 +52,10 @@ const Page = () => {
       <div className='mt-5 mb-3'>
         <Image src='/01.jpg' width={500} height={500} alt='00123DE' />
       </div>
-      <div>
-        <h1 className='font-bold text-xl mb-2'>{ITEM_DATA.name}</h1>
-        <p className='w-2/3 mb-2'>{ITEM_DATA.description}</p>
-        <p className='font-bold text-xl mb-2'>{ITEM_DATA.price}$</p>
+      <div className=''>
+        <h1 className='font-bold text-xl mb-1'>{ITEM_DATA.name}</h1>
+        <p className='w-2/3 mb-5 text-sm'>{ITEM_DATA.description}</p>
+        <p className='font-bold text-xl mb-5'>{ITEM_DATA.price}$</p>
         <div className='color-boxes-container'>{colorBoxes}</div>
       </div>
       <button
