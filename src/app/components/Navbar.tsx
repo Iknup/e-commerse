@@ -2,8 +2,8 @@ import Link from 'next/link';
 
 const Navbar = () => {
   return (
-    <nav className='sticky'>
-      <div className='max-w-screen mx-2 mt-2 flex justify-between items-center  lg:hidden'>
+    <nav className='sticky top-0 z-50 bg-white'>
+      <div className='max-w-screen mx-2 mt-2 flex justify-between items-center '>
         <button>
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -11,7 +11,7 @@ const Navbar = () => {
             viewBox='0 0 24 24'
             strokeWidth={1.5}
             stroke='currentColor'
-            className='w-10 h-10'
+            className='w-8 h-8'
           >
             <path
               strokeLinecap='round'
