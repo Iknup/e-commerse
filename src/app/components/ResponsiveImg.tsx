@@ -16,7 +16,6 @@ const ResponsiveImg = ({ imgSrc, imgAlt, ratio, className }: ImgType) => {
   useEffect(() => {
     const handleResize = () => {
       const screenWidth = window.innerWidth;
-      console.log(screenWidth);
       const isMediaSmall = screenWidth <= 768;
       const desireHeight = screenWidth / (isMediaSmall ? ratio.sm : ratio.md);
 
@@ -32,10 +31,8 @@ const ResponsiveImg = ({ imgSrc, imgAlt, ratio, className }: ImgType) => {
     };
   }, []);
 
-  console.log(imgHeight);
-
   return (
-    <div className={` w-screen relative`} style={{ height: imgHeight }}>
+    <div className={`w-screen relative`} style={{ height: imgHeight }}>
       <Image
         src={imgSrc}
         alt={imgAlt}
