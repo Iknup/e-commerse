@@ -19,7 +19,7 @@ const Page = () => {
           <Image alt='main-man01' src={'/main-man01.jpg'} fill />
         </div>
         <div className='max-w-5xl absolute bottom-3 left-3 text-3xl font-bold'>
-          Men's <br /> Lorem ipsum
+          Men&apos;s <br /> Lorem ipsum
         </div>
       </div>
       <div className=' max-w-7xl mx-auto px-2'>
