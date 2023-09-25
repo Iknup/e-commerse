@@ -26,7 +26,10 @@ const Page = () => {
         <div className='flex space-x-2 overflow-hidden mt-5 mb-8'>
           {CATEGORIES.map((category) => {
             return (
-              <button className='bg-filter-button p-2 rounded-md font-semibold'>
+              <button
+                key={category}
+                className='bg-filter-button p-2 rounded-md font-semibold'
+              >
                 {category}
               </button>
             );
@@ -36,6 +39,7 @@ const Page = () => {
           {DUMMY_SHORTS.map((short) => {
             return (
               <ItemGrid
+                key={short.id}
                 name={short.name}
                 id={short.id}
                 price={short.price}

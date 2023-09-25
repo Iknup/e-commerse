@@ -24,7 +24,11 @@ const ItemGrid = ({ name, id, images, price, color, hashtag }: Props) => {
           <p className='text-[#727272] mr-2'>{color} colors</p>
           <div className='flex font-bold text-[#995555]'>
             {hashtag?.map((hashtag) => {
-              return <p className='mr-2'>#{hashtag}</p>;
+              return (
+                <p key={hashtag} className='mr-2'>
+                  #{hashtag}
+                </p>
+              );
             })}
           </div>
         </div>
