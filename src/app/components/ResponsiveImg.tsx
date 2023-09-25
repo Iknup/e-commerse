@@ -7,7 +7,7 @@ type ImgType = {
   imgSrc: string;
   imgAlt: string;
   ratio: { sm: number; md: number };
-  className: string | undefined;
+  className?: string | undefined;
 };
 
 const ResponsiveImg = ({ imgSrc, imgAlt, ratio, className }: ImgType) => {

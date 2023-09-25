@@ -22,6 +22,18 @@ export default function Home() {
           <Link href={'/'}>See All</Link>
         </div>
       </div>
+      <div className='flex mt-5 flex-col sm:flex-row sm:justify-evenly px-3 w-full'>
+        <Link className='sm:w-[45%] h-44 bg-black relative mb-2' href={'/men'}>
+          <p className='bg-white w-28 font-semibold indent-2 absolute bottom-10'>
+            Man
+          </p>
+        </Link>
+        <Link className='sm:w-[45%] h-44 bg-black relative mb-2' href={'/'}>
+          <p className='bg-white w-28 font-semibold indent-2 absolute bottom-10'>
+            Woman
+          </p>
+        </Link>
+      </div>
     </main>
   );
 }

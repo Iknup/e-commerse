@@ -11,6 +11,7 @@ const item03: Item = {
   price: 19.95,
   color: ['#DAF7A6', '#FF5733', '#663300', '#FFFFFF', '#000000'],
   size: ['xs', 's', 'm', 'l', 'xl'],
+  hashtag: ['new', 'best seller'],
 };
 
 const item05: Item = {
@@ -24,6 +25,7 @@ const item05: Item = {
   price: 19.95,
   color: ['#DAF7A6', '#FF5733', '#663300', '#FFFFFF', '#000000'],
   size: ['xs', 's', 'm', 'l', 'xl'],
+  hashtag: ['new'],
 };
 
 const item08: Item = {
@@ -45,6 +47,7 @@ const item08: Item = {
     '#0508CF',
   ],
   size: ['xs', 's', 'm', 'l', 'xl'],
+  hashtag: ['new'],
 };
 
 const item12: Item = {
@@ -66,6 +69,7 @@ const item12: Item = {
     '#0508CF',
   ],
   size: ['xs', 's', 'm', 'l', 'xl'],
+  hashtag: ['best seller'],
 };
 
 const item13: Item = {
@@ -107,6 +111,7 @@ const item17: Item = {
     '#F20813',
     '#0508CF',
   ],
+  hashtag: ['new'],
   size: ['xs', 's', 'm', 'l', 'xl'],
 };
 

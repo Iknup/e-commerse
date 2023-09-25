@@ -8,4 +8,5 @@ export interface Item {
   color: string[];
   review?: [{}];
   size: string[];
+  hashtag?: string[];
 }
