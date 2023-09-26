@@ -20,9 +20,12 @@ const Navbar = () => {
             />
           </svg>
         </button>
-        <h1 className='font-extrabold text-center text-2xl tracking-widest'>
+        <Link
+          href={'/'}
+          className='font-extrabold text-center text-2xl tracking-widest'
+        >
           LOREM
-        </h1>
+        </Link>
         <div className='flex'>
           <Link href={'/cart'}>
             <svg

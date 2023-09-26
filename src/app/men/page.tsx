@@ -23,12 +23,12 @@ const Page = () => {
         </div>
       </div>
       <div className=' max-w-7xl mx-auto px-2'>
-        <div className='flex space-x-2 overflow-hidden mt-5 mb-8'>
+        <div className='flex space-x-2 overflow-auto mt-5 mb-8'>
           {CATEGORIES.map((category) => {
             return (
               <button
                 key={category}
-                className='bg-filter-button p-2 rounded-md font-semibold'
+                className='bg-filter-button p-2 rounded-md font-semibold whitespace-nowrap'
               >
                 {category}
               </button>
