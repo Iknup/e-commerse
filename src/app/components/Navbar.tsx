@@ -24,7 +24,7 @@ const Navbar = () => {
           href={'/'}
           className='font-extrabold text-center text-2xl tracking-widest'
         >
-          LOREM
+          SISLEY
         </Link>
         <div className='flex'>
           <Link href={'/cart'}>
