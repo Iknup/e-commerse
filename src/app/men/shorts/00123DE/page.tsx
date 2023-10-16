@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import ColorBox from './components/ColorBox';
 import MobileDetail from './components/MobileDetail';
+import ItemGrid from '@/app/components/ItemGrid';
+import RecommendItem from './components/RecommendItem';
 
 const ITEM_DATA: {
   name: string;
@@ -8,7 +10,7 @@ const ITEM_DATA: {
   detail: string;
   price: number;
   color: string[];
-  review: [{}];
+  reviews: [{ id: string; rating: number; review: string }];
   size: string[];
 } = {
   name: 'lorem blue short pants',
@@ -29,7 +31,7 @@ const ITEM_DATA: {
     '#aed184',
     '#669976',
   ],
-  review: [
+  reviews: [
     {
       id: '01',
       rating: 5,
@@ -47,24 +49,74 @@ const Page = () => {
     return <ColorBox key={color} color={color} />;
   });
 
+  const sizeBoxes = ITEM_DATA.size.map((size) => {
+    return (
+      <button className='border-2 border-black'>{size.toUpperCase()}</button>
+    );
+  });
+
   return (
-    <main className='mx-3'>
-      <div className='mt-5 mb-3'>
-        <Image src='/01.jpg' width={500} height={500} alt='00123DE' />
+    <main className='max-w-7xl mx-auto px-4'>
+      <div className=' mt-5 sm:flex'>
+        <div className=' mb-3'>
+          <Image src='/01.jpg' width={500} height={500} alt='00123DE' />
+        </div>
+        <div className='sm:px-8'>
+          <h1 className='font-bold text-xl mb-1 sm:text-2xl sm:h-16'>
+            {ITEM_DATA.name}
+          </h1>
+          <p className='w-2/3 mb-5 text-sm sm:h-32'>{ITEM_DATA.description}</p>
+          <p className='font-bold text-xl sm:text-2xl mb-5'>
+            {ITEM_DATA.price}$
+          </p>
+          <div className='color-boxes-container'>{colorBoxes}</div>
+          <div className='grid grid-cols-4 gap-2'>{sizeBoxes}</div>
+          <button
+            className='w-full h-14 bg-black rounded-lg mt-4 text-white 
+      text-center font-semibold text-xl mb-4'
+          >
+            Add to Cart
+          </button>
+        </div>
+        <MobileDetail sizes={ITEM_DATA.size} />
       </div>
       <div className=''>
-        <h1 className='font-bold text-xl mb-1'>{ITEM_DATA.name}</h1>
-        <p className='w-2/3 mb-5 text-sm'>{ITEM_DATA.description}</p>
-        <p className='font-bold text-xl mb-5'>{ITEM_DATA.price}$</p>
-        <div className='color-boxes-container'>{colorBoxes}</div>
+        <div className='sm:flex border-b-2 pb-3'>
+          <button className='w-1/3 text-2xl font-semibold overline'>
+            REVIEW
+          </button>
+          <button className='w-2/3 text-center text-2xl font-semibold'>
+            DESCRIPCIÓN
+          </button>
+        </div>
+        <div className='flex items-center'>
+          <div className='sm:flex text-3xl'>
+            <div className='w-40 h-32 pl-8 flex items-center border-r-2'>
+              5/5
+            </div>
+          </div>
+          <p className='pl-3'>
+            Total Review:1 <br />
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa,
+            praesentium quas repellendus facilis recusandae illo nihil
+            consectetur rem magni. Repellendus magnam pariatur necessitatibus
+            reprehenderit! Voluptates reiciendis labore dignissimos? Ex, maxime.
+          </p>
+        </div>
+        <div className='mb-10'>
+          {ITEM_DATA.reviews.map((review) => {
+            return (
+              <div key={review.id} className='flex px-2'>
+                <p className='mr-3'>{review.rating}/5</p>
+                <p>{review.review}</p>
+              </div>
+            );
+          })}
+        </div>
       </div>
-      <button
-        className='w-full h-14 bg-black rounded-lg mt-4 text-white 
-      text-center font-semibold text-xl mb-4'
-      >
-        Add to Cart
-      </button>
-      <MobileDetail sizes={ITEM_DATA.size} />
+      <div className='w-full'>
+        <RecommendItem />
+      </div>
     </main>
   );
 };
