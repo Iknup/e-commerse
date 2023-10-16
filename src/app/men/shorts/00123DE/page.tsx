@@ -51,7 +51,9 @@ const Page = () => {
 
   const sizeBoxes = ITEM_DATA.size.map((size) => {
     return (
-      <button className='border-2 border-black'>{size.toUpperCase()}</button>
+      <button key={size} className='border-2 border-black'>
+        {size.toUpperCase()}
+      </button>
     );
   });
 
