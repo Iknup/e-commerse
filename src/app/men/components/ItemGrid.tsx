@@ -8,11 +8,20 @@ type Props = {
   price: number;
   color: number;
   hashtag?: string[];
+  category: string;
 };
 
-const ItemGrid = ({ name, id, images, price, color, hashtag }: Props) => {
+const ItemGrid = ({
+  name,
+  id,
+  images,
+  price,
+  color,
+  hashtag,
+  category,
+}: Props) => {
   return (
-    <Link href={'#'}>
+    <Link href={'/' + category + '/' + id}>
       <div className='w-[170px] sm:w-[300px]'>
         <div className='h-[220px] mx-auto sm:h-[400px] relative mb-3'>
           <Image src={images[0]} alt={images[0]} fill />

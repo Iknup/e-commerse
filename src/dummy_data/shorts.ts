@@ -12,6 +12,22 @@ const item03: Item = {
   color: ['#DAF7A6', '#FF5733', '#663300', '#FFFFFF', '#000000'],
   size: ['xs', 's', 'm', 'l', 'xl'],
   hashtag: ['new', 'best seller'],
+  review: [
+    {
+      id: '001',
+      user: 'Nier J',
+      rating: 4.5,
+      review:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    },
+    {
+      id: '002',
+      user: 'Ruddy Andres',
+      rating: 4,
+      review:
+        'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?',
+    },
+  ],
 };
 
 const item05: Item = {
@@ -26,6 +42,29 @@ const item05: Item = {
   color: ['#DAF7A6', '#FF5733', '#663300', '#FFFFFF', '#000000'],
   size: ['xs', 's', 'm', 'l', 'xl'],
   hashtag: ['new'],
+  review: [
+    {
+      id: '001',
+      user: 'Oral B',
+      rating: 5,
+      review:
+        'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.',
+    },
+    {
+      id: '002',
+      user: 'YesikPink',
+      rating: 3,
+      review:
+        'Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.',
+    },
+    {
+      id: '003',
+      user: 'RuddyYoFo',
+      rating: 5,
+      review:
+        'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    },
+  ],
 };
 
 const item08: Item = {
@@ -48,6 +87,15 @@ const item08: Item = {
   ],
   size: ['xs', 's', 'm', 'l', 'xl'],
   hashtag: ['new'],
+  review: [
+    {
+      id: '001',
+      user: 'MelYuna',
+      rating: 4.5,
+      review:
+        'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+    },
+  ],
 };
 
 const item12: Item = {
@@ -70,6 +118,34 @@ const item12: Item = {
   ],
   size: ['xs', 's', 'm', 'l', 'xl'],
   hashtag: ['best seller'],
+  review: [
+    {
+      id: '001',
+      user: 'OralB',
+      rating: 5,
+      review:
+        'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
+    },
+    {
+      id: '002',
+      user: 'YesikPink',
+      rating: 4.5,
+      review:
+        'Lo compre para el regalo de mi novio, le queda mas hermoso que nunca!',
+    },
+    {
+      id: '003',
+      user: 'Ruddy Andres',
+      rating: 5,
+      review: 'Queda muy bonito con mi piernas musculosas',
+    },
+    {
+      id: '004',
+      user: 'Nier J',
+      rating: 5,
+      review: '난 귀여운 한국인이다 하하하하하하',
+    },
+  ],
 };
 
 const item13: Item = {
@@ -91,6 +167,15 @@ const item13: Item = {
     '#0508CF',
   ],
   size: ['xs', 's', 'm', 'l', 'xl'],
+  review: [
+    {
+      id: '001',
+      user: 'Nier J',
+      rating: 4,
+      review:
+        'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.',
+    },
+  ],
 };
 
 const item17: Item = {
@@ -113,6 +198,9 @@ const item17: Item = {
   ],
   hashtag: ['new'],
   size: ['xs', 's', 'm', 'l', 'xl'],
+  review: [
+    { id: '001', user: '17', rating: 3, review: '171717171717171717171717' },
+  ],
 };
 
 export const DUMMY_SHORTS: Item[] = [

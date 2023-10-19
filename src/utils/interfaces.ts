@@ -6,7 +6,7 @@ export interface Item {
   detail: string;
   price: number;
   color: string[];
-  review?: [{}];
+  review?: { rating: number; user: string; review: string; id: string }[];
   size: string[];
   hashtag?: string[];
 }

@@ -11,7 +11,7 @@ const MobileDetail = ({ sizes }: { sizes: string[] }) => {
   const [showSize, setShowSize] = useState(false);
 
   return (
-    <div className='flex flex-col text-lg font-semibold lg:hidden'>
+    <div className='flex flex-col text-lg font-semibold sm:hidden'>
       <div className='border-b-[2px]'>
         <button
           onClick={() => {

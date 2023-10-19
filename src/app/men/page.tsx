@@ -49,6 +49,7 @@ const Page = () => {
           {DUMMY_SHORTS.map((short) => {
             return (
               <ItemGrid
+                category={'men'}
                 key={short.id}
                 name={short.name}
                 id={short.id}
