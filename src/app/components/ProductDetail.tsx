@@ -54,6 +54,7 @@ const ProductDetail = ({
 
     return (
       <button
+        key={size}
         onClick={() => {
           setSelectedSize(i);
         }}
