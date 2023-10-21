@@ -3,7 +3,7 @@ import ColorBox from './components/ColorBox';
 import MobileDetail from './components/MobileDetail';
 import RecommendItem from './components/RecommendItem';
 import { DUMMY_SHORTS } from '@/dummy_data/shorts';
-import AddToCart from '@/app/components/AddToCart';
+import ProductDetail from '@/app/components/ProductDetail';
 
 const getProductDetail = (id: string) => {
   const product = DUMMY_SHORTS.find((short) => short.id === id);
@@ -13,10 +13,6 @@ const getProductDetail = (id: string) => {
 
 const Page = ({ params }: { params: { id: string } }) => {
   const productData = getProductDetail(params.id);
-
-  const colorBoxes: JSX.Element[] = productData!.color.map((color) => {
-    return <ColorBox key={color} color={color} />;
-  });
 
   const sizeBoxes = productData!.size.map((size) => {
     return (
@@ -29,7 +25,7 @@ const Page = ({ params }: { params: { id: string } }) => {
   return (
     <main className='max-w-7xl mx-auto px-4'>
       <div className='mt-5 sm:flex sm:justify-center'>
-        <div className='w-[60%] mb-3'>
+        <div className='sm:w-[60%] mb-3'>
           <Image
             src={productData!.images[0]}
             width={900}
@@ -37,22 +33,12 @@ const Page = ({ params }: { params: { id: string } }) => {
             alt='00123DE'
           />
         </div>
-        <div className='sm:px-8 w-1/3 h-full'>
-          <h1 className='font-bold text-xl mb-1 sm:text-2xl sm:h-16'>
-            {productData!.name}
-          </h1>
-          <p className='w-full mb-5 text-sm sm:h-32 overflow-hidden'>
-            {productData!.description}
-          </p>
-          <p className='font-bold text-xl sm:text-2xl mb-5'>
-            {productData!.price}$
-          </p>
-          <div className='color-boxes-container'>{colorBoxes}</div>
-          <div className='grid grid-cols-4 gap-2'>{sizeBoxes}</div>
-          <AddToCart
+        <div className='sm:px-8 sm:w-1/3 h-full sticky top-10'>
+          <ProductDetail
             id={productData!.id}
             image={productData!.images[0]}
             size={productData!.size}
+            detail={productData!.detail}
             name={productData!.name}
             price={productData!.price}
             color={productData!.color}

@@ -15,6 +15,7 @@ const config: Config = {
       },
       boxShadow: {
         'color-box': '0 6px 5px rgba(0, 0, 0, 0.25)',
+        'modal-box': '0 7px 5px rgba(0, 0, 0, 0.20)',
       },
       colors: {
         'filter-button': '#f2f2f2',

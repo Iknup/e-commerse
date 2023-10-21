@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Review from './detail/Review';
 import Description from './detail/Description';
-import Size from './detail/Size';
+import Sizes from './detail/Sizes';
 
 const MobileDetail = ({ sizes }: { sizes: string[] }) => {
   const [showReview, setShowReview] = useState(false);
@@ -46,7 +46,7 @@ const MobileDetail = ({ sizes }: { sizes: string[] }) => {
           <span>TAMAÑO</span>
           <span>{showSize ? '-' : '+'}</span>
         </button>
-        {showSize && <Size sizes={sizes} />}
+        {showSize && <Sizes sizes={sizes} />}
       </div>
     </div>
   );

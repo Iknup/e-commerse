@@ -1,3 +1,4 @@
+import IconHome from '@/icons/navbar/IconHome';
 import IconMen from '@/icons/navbar/IconMen';
 import IconNewCollection from '@/icons/navbar/IconNewCollection';
 import IconSale from '@/icons/navbar/IconSale';
@@ -10,7 +11,7 @@ const BottomNavbar = () => {
     <nav className='z-50 sticky bottom-0 bg-white hidden md:flex h-[90px]'>
       <div className='flex mx-auto items-center gap-2 pb-2'>
         <Link href={'/'} className={buttonStyle}>
-          Home
+          <IconHome />
         </Link>
         <Link href={'/men'} className={buttonStyle}>
           <IconMen />
