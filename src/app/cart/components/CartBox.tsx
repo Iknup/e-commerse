@@ -16,26 +16,12 @@ const CartBox = () => {
 
   if (Array.isArray(cartCookie)) {
     const cartArray = cartCookie as cartItemObject[];
+    const onDelete = (id: string) => {
+      const newCartArray = cartArray.filter((item) => {
+        return item.id !== id;
+      });
 
-    const onChange = (
-      id: string,
-      action: string,
-      newValue: cartItemObject | null
-    ) => {
-      if (action === 'quantity') {
-        const itemIndex = cartArray.findIndex((item) => {
-          return item.id === id;
-        });
-
-        cartArray[itemIndex] = newValue as cartItemObject;
-        console.log(cartArray);
-        setCartCookie(cartArray);
-      } else if (action === 'delete') {
-        const newCartArray = cartArray.filter((item) => {
-          return item.id !== id;
-        });
-        setCartCookie(newCartArray);
-      }
+      setCartCookie(newCartArray);
     };
 
     return (
@@ -48,12 +34,12 @@ const CartBox = () => {
             return (
               <CartItem
                 key={item.id}
-                onChange={onChange}
                 productId={item.productId}
                 size={item.size}
                 color={item.color}
                 id={item.id}
                 quantity={item.quantity}
+                onDeleteItem={onDelete}
               />
             );
           })}

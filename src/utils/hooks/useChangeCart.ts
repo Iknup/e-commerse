@@ -1,5 +1,5 @@
 import { cartItemObject } from '../interfaces';
-import { getCookie, setCookie } from 'cookies-next';
+import { getCookie, setCookie, deleteCookie } from 'cookies-next';
 
 export const useChangeCart = (
   id: string,
@@ -13,20 +13,23 @@ export const useChangeCart = (
     const cartData = JSON.parse(cartDataJSON);
     const cartArray = cartData as cartItemObject[];
 
-    let newCartArray;
     if (action === 'quantity') {
       const itemIndex = cartArray.findIndex((item) => {
         return item.id === id;
       });
       cartArray[itemIndex] = value as cartItemObject;
 
-      newCartArray = cartArray;
+      const newCartArray = cartArray;
+      setCookie('cart', newCartArray);
     } else if (action === 'delete') {
-      newCartArray = cartArray.filter((item) => {
+      const newCartArray = cartArray.filter((item) => {
         return item.id !== id;
       });
+      if (newCartArray.length === 0) {
+        deleteCookie('cart');
+      } else {
+        setCookie('cart', newCartArray);
+      }
     }
-
-    setCookie('cart', newCartArray);
   }
 };
