@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import Modal from './Modal';
-import { useAddtoCart } from '@/utils/hooks/useAddtoCart';
+import { addtoCartCookie } from '@/utils/hooks/addtoCartCookie';
 
 type Props = {
   id: string;
@@ -70,7 +70,7 @@ const ProductDetail = ({
     if (!selectedSize) {
     }
 
-    useAddtoCart(id, color[activeColor], size[selectedSize!], 1);
+    addtoCartCookie(id, color[activeColor], size[selectedSize!], 1);
   };
 
   return (

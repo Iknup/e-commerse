@@ -1,6 +1,6 @@
 import { DUMMY_SHORTS } from '@/dummy_data/shorts';
 import Image from 'next/image';
-import { useChangeCart } from '@/utils/hooks/useChangeCart';
+import { changeCartCookie } from '@/utils/hooks/changeCartCookie';
 import { useState } from 'react';
 
 type props = {
@@ -46,7 +46,7 @@ const CartItem = ({
       quantity: itemState.quantity + 1,
     };
     setItemState(value);
-    useChangeCart(id, 'quantity', value);
+    changeCartCookie(id, 'quantity', value);
   };
 
   const onDecrement = () => {
@@ -61,11 +61,11 @@ const CartItem = ({
       quantity: itemState.quantity - 1,
     };
     setItemState(value);
-    useChangeCart(id, 'quantity', value);
+    changeCartCookie(id, 'quantity', value);
   };
 
   const onDelete = () => {
-    useChangeCart(id, 'delete');
+    changeCartCookie(id, 'delete');
     onDeleteItem(id);
   };
 

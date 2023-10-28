@@ -1,7 +1,7 @@
 import { hasCookie, setCookie, getCookie } from 'cookies-next';
 import { cartItemObject } from '../interfaces';
 
-export const useAddtoCart = (
+export const addtoCartCookie = (
   productId: string,
   color: string,
   size: string,

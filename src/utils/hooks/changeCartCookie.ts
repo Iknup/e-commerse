@@ -1,7 +1,7 @@
 import { cartItemObject } from '../interfaces';
 import { getCookie, setCookie, deleteCookie } from 'cookies-next';
 
-export const useChangeCart = (
+export const changeCartCookie = (
   id: string,
   action: string,
   value: cartItemObject | null = null
