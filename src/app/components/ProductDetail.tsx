@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import Modal from './Modal';
+import { useAddtoCart } from '@/utils/hooks/useAddtoCart';
 
 type Props = {
   id: string;
@@ -68,6 +69,8 @@ const ProductDetail = ({
   const addToCart = () => {
     if (!selectedSize) {
     }
+
+    useAddtoCart(id, color[activeColor], size[selectedSize!], 1);
   };
 
   return (
@@ -80,6 +83,7 @@ const ProductDetail = ({
       <button
         onClick={() => {
           setConfirmedBoxOpened(!confirmedBoxOpened);
+          addToCart();
         }}
         className='w-full h-14 bg-black rounded-lg mt-4 text-white 
 text-center font-semibold text-xl mb-4'

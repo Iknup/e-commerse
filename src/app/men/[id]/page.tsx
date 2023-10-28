@@ -14,14 +14,6 @@ const getProductDetail = (id: string) => {
 const Page = ({ params }: { params: { id: string } }) => {
   const productData = getProductDetail(params.id);
 
-  const sizeBoxes = productData!.size.map((size) => {
-    return (
-      <button key={size} className='border-2 border-black'>
-        {size.toUpperCase()}
-      </button>
-    );
-  });
-
   return (
     <main className='max-w-7xl mx-auto px-4'>
       <div className='mt-5 sm:flex sm:justify-center'>
