@@ -11,10 +11,3 @@ export interface Item {
   hashtag?: string[];
 }
 
-export interface cartItemObject {
-  productId: string;
-  id: string;
-  color: string;
-  size: string;
-  quantity: number;
-}

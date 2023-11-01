@@ -1,6 +1,6 @@
 import CartBox from './components/CartBox';
 
-const getCart = () => {};
+
 
 const CartPage = () => {
   let cartContext;

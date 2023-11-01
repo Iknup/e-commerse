@@ -1,7 +1,7 @@
 import { DUMMY_SHORTS } from '@/dummy_data/shorts';
 import Image from 'next/image';
-import { changeCartCookie } from '@/utils/hooks/changeCartCookie';
-import { useState } from 'react';
+import { useAppDispatch } from '@/utils/hooks/reduxHooks';
+import { cartAction } from '@/store/cartSlice';
 
 type props = {
   productId: string;
@@ -9,32 +9,11 @@ type props = {
   color: string;
   size: string;
   quantity: number;
-  onDeleteItem: (id: string) => void;
 };
 
-const CartItem = ({
-  productId,
-  id,
-  color,
-  size,
-  quantity,
-  onDeleteItem,
-}: props) => {
+const CartItem = ({ productId, id, color, size, quantity }: props) => {
+  const dispatch = useAppDispatch();
   const item = DUMMY_SHORTS.find((short) => productId === short.id);
-  const [itemState, setItemState] = useState<{
-    productId: string;
-    id: string;
-    color: string;
-    size: string;
-    quantity: number;
-  }>({
-    productId,
-    id,
-    color,
-    size,
-    quantity,
-  });
-
   const image = item!.images[0];
 
   const onIncrement = () => {
@@ -43,14 +22,15 @@ const CartItem = ({
       id,
       color,
       size,
-      quantity: itemState.quantity + 1,
+      price: item!.price,
+      quantity: quantity + 1,
     };
-    setItemState(value);
-    changeCartCookie(id, 'quantity', value);
+
+    dispatch(cartAction.editItem(value));
   };
 
   const onDecrement = () => {
-    if (itemState.quantity === 1) {
+    if (quantity === 1) {
       return;
     }
     const value = {
@@ -58,15 +38,15 @@ const CartItem = ({
       id,
       color,
       size,
-      quantity: itemState.quantity - 1,
+      price: item!.price,
+      quantity: quantity - 1,
     };
-    setItemState(value);
-    changeCartCookie(id, 'quantity', value);
+
+    dispatch(cartAction.editItem(value));
   };
 
   const onDelete = () => {
-    changeCartCookie(id, 'delete');
-    onDeleteItem(id);
+    dispatch(cartAction.removeItem(id));
   };
 
   return (
@@ -83,13 +63,13 @@ const CartItem = ({
       <div className='flex flex-col self-center'>
         <div className='flex items-center'>
           <div className='font-bold mr-4'>
-            {(item!.price * itemState.quantity).toFixed(2)} USD
+            {(item!.price * quantity).toFixed(2)} USD
           </div>
           <div className='flex rounded-2xl border-2 items-center border-[#bfbfbf] justify-around'>
             <button onClick={onDecrement} className='mx-2 text-2xl'>
               -
             </button>
-            <p className='text-xl'>{itemState.quantity}</p>
+            <p className='text-xl'>{quantity}</p>
             <button onClick={onIncrement} className='mx-2 text-2xl'>
               +
             </button>

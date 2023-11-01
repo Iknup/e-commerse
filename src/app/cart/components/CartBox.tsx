@@ -1,36 +1,24 @@
 'use client';
 
-import { getCookie } from 'cookies-next';
 import CartItem from './CartItem';
-import { cartItemObject } from '@/utils/interfaces';
-import { useEffect, useState } from 'react';
+import { useAppSelector } from '@/utils/hooks/reduxHooks';
 
 const CartBox = () => {
-  const [cartCookie, setCartCookie] = useState<cartItemObject[] | null>(null);
+  const cartItems = useAppSelector((state) => state.cart.cartItems);
 
-  useEffect(() => {
-    const cartDataJSON = getCookie('cart');
-    const cartData = JSON.parse(cartDataJSON!);
-    setCartCookie(cartData);
-  }, []);
-
-  if (Array.isArray(cartCookie)) {
-    const cartArray = cartCookie as cartItemObject[];
-    const onDelete = (id: string) => {
-      const newCartArray = cartArray.filter((item) => {
-        return item.id !== id;
-      });
-
-      setCartCookie(newCartArray);
-    };
+  if (cartItems.length > 0) {
+    const totalPrice = cartItems.reduce((acc, item) => {
+      return acc + item.price * item.quantity;
+    }, 0);
 
     return (
       <>
-        <div className='flex'>
-          <p>Precio Total</p>
+        <div className='flex mb-3'>
+          <p>Precio Total:</p>
+          <p className='font-bold'>{totalPrice.toFixed(2)}$</p>
         </div>
         <div className='flex flex-col gap-y-4 px-3'>
-          {cartArray.map((item: cartItemObject) => {
+          {cartItems.map((item) => {
             return (
               <CartItem
                 key={item.id}
@@ -39,7 +27,6 @@ const CartBox = () => {
                 color={item.color}
                 id={item.id}
                 quantity={item.quantity}
-                onDeleteItem={onDelete}
               />
             );
           })}
