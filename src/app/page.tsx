@@ -13,7 +13,7 @@ export default function Home() {
           className=''
         />
       </div>
-      <div className='mt-10  w-full'>
+      <div className='mt-10 w-full'>
         <h1 className='text-2xl mb-4 font-semibold text-center'>
           Nueva Colleción
         </h1>
