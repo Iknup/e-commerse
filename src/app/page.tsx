@@ -1,5 +1,5 @@
 import MainSlider from './components/MainSlider';
-import ItemGrid from './components/ItemGrid';
+import NewCollection from './components/NewCollection';
 import Link from 'next/link';
 
 export default function Home() {
@@ -15,11 +15,11 @@ export default function Home() {
       </div>
       <div className='mt-10  w-full'>
         <h1 className='text-2xl mb-4 font-semibold text-center'>
-          New Collection
+          Nueva Colleción
         </h1>
-        <ItemGrid />
+        <NewCollection />
         <div className='text-center mt-3 font-bold '>
-          <Link href={'/'}>See All</Link>
+          <Link href={'/'}>Ver todo</Link>
         </div>
       </div>
       <div className='flex mt-5 flex-col sm:flex-row sm:justify-evenly px-3 w-full'>

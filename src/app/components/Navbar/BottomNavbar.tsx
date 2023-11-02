@@ -4,7 +4,7 @@ import IconNewCollection from '@/icons/navbar/IconNewCollection';
 import IconSale from '@/icons/navbar/IconSale';
 import IconWomen from '@/icons/navbar/IconWomen';
 import Link from 'next/link';
-import BottomCart from '../BottomCart/BottomCart';
+import BottomCartButton from '../BottomCart/BottomCartButton';
 
 const BottomNavbar = () => {
   const buttonStyle = 'w-14 h-14 mx-4 text-center';
@@ -26,7 +26,7 @@ const BottomNavbar = () => {
         <button className={buttonStyle}>
           <IconSale />
         </button>
-        <BottomCart />
+        <BottomCartButton />
       </div>
     </nav>
   );

@@ -4,7 +4,7 @@ import { DUMMY_SHORTS } from '@/dummy_data/shorts';
 import PreviewBox from './PreviewBox';
 import { useEffect, useState } from 'react';
 
-const ItemGrid = () => {
+const NewCollection = () => {
   const [imgSize, setImgSize] = useState({ w: 0, h: 0 });
   const [padding, setPadding] = useState(10);
   const [yGap, setYGap] = useState(0);
@@ -62,4 +62,4 @@ const ItemGrid = () => {
   );
 };
 
-export default ItemGrid;
+export default NewCollection;
