@@ -20,7 +20,7 @@ const BigPreview = ({ name, id, price, image }: Props) => {
           <h3 className='font-bold text-2xl underline decoration-2 underline-offset-8'>
             {name}
           </h3>
-          <p>{price}</p>
+          <p>{price}$</p>
         </Link>
       </div>
     </div>
