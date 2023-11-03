@@ -48,7 +48,11 @@ const BottomCartButton = () => {
         >
           <IconCart />
         </button>
-        <div className={`absolute -top-2 left-2`}>
+        <div
+          className={`absolute -top-2 left-2 ${
+            showButton ? 'block' : 'hidden'
+          }`}
+        >
           <CartQuantityNoti quantity={cartItems.length} />
         </div>
       </div>
