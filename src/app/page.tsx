@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import MainSlider from './components/MainSlider';
 import NewCollection from './components/NewCollection';
 import Link from 'next/link';
@@ -23,7 +24,25 @@ export default function Home() {
         </div>
       </div>
       <div className='flex mt-5 flex-col sm:flex-row sm:justify-evenly px-3 w-full'>
-        <Link className='sm:w-[45%] h-44 bg-black relative mb-2' href={'/men'}>
+        <div className='w-50vh h-[90vh] relative'>
+          <Image
+            src={'/main-man02.jpg'}
+            width={1200}
+            height={1200}
+            style={{ objectFit: 'cover', width: '50vh', height: '90vh' }}
+            alt='category-man'
+          />
+        </div>
+        <div className='w-50vh h-[90vh] relative'>
+          <Image
+            src={'/category-woman01.jpg'}
+            width={1200}
+            height={1200}
+            style={{ objectFit: 'cover', width: '50vh', height: '90vh' }}
+            alt='category-woman'
+          />
+        </div>
+        {/* <Link className='sm:w-[45%] h-44 bg-black relative mb-2' href={'/men'}>
           <p className='bg-white w-28 font-semibold indent-2 absolute bottom-10'>
             Man
           </p>
@@ -32,7 +51,7 @@ export default function Home() {
           <p className='bg-white w-28 font-semibold indent-2 absolute bottom-10'>
             Woman
           </p>
-        </Link>
+        </Link> */}
       </div>
     </main>
   );
