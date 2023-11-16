@@ -23,35 +23,45 @@ export default function Home() {
           <Link href={'/'}>Ver todo</Link>
         </div>
       </div>
-      <div className='flex mt-5 flex-col sm:flex-row sm:justify-evenly px-3 w-full'>
-        <div className='w-50vh h-[90vh] relative'>
+      <div className='mt-5 w-full grid sm:grid-cols-2'>
+        <div className='relative group'>
           <Image
-            src={'/main-man02.jpg'}
-            width={1200}
-            height={1200}
-            style={{ objectFit: 'cover', width: '50vh', height: '90vh' }}
-            alt='category-man'
+            src={'/home_crop_01.jpg'}
+            width={1600}
+            height={1600}
+            alt='home_man'
           />
+          <div
+            className='absolute top-0 w-full h-full bg-opacity-50 bg-black flex sm:hidden items-center 
+            justify-center 
+            sm:group-hover:flex
+            sm:group-hover:bg-black sm:group-hover:bg-opacity-50 text-white '
+          >
+            <Link href={'/men'} className='text-center text-xl font-bold'>
+              <p>SISLEY</p>
+              <p className='overline'>HOMBRE</p>
+            </Link>
+          </div>
         </div>
-        <div className='w-50vh h-[90vh] relative'>
+        <div className='relative group'>
           <Image
-            src={'/category-woman01.jpg'}
-            width={1200}
-            height={1200}
-            style={{ objectFit: 'cover', width: '50vh', height: '90vh' }}
-            alt='category-woman'
+            src={'/home_crop_02.jpg'}
+            width={1600}
+            height={1600}
+            alt='home_woman'
           />
+          <div
+            className='absolute top-0 w-full h-full bg-opacity-50 bg-black flex sm:hidden items-center 
+            justify-center 
+            sm:group-hover:flex
+            sm:group-hover:bg-black sm:group-hover:bg-opacity-50 text-white '
+          >
+            <Link href={'/'} className='text-center text-xl font-bold'>
+              <p>SISLEY</p>
+              <p className='overline'>MUJER</p>
+            </Link>
+          </div>
         </div>
-        {/* <Link className='sm:w-[45%] h-44 bg-black relative mb-2' href={'/men'}>
-          <p className='bg-white w-28 font-semibold indent-2 absolute bottom-10'>
-            Man
-          </p>
-        </Link>
-        <Link className='sm:w-[45%] h-44 bg-black relative mb-2' href={'/'}>
-          <p className='bg-white w-28 font-semibold indent-2 absolute bottom-10'>
-            Woman
-          </p>
-        </Link> */}
       </div>
     </main>
   );

@@ -47,12 +47,12 @@ const BottomCartButton = () => {
           }
         >
           <IconCart />
+          <div className={`absolute -top-2 left-2`}>
+            <CartQuantityNoti quantity={cartItems.length} />
+          </div>
         </button>
-        <div className={`absolute -top-2 left-2`}>
-          <CartQuantityNoti quantity={cartItems.length} />
-        </div>
       </div>
-      {showCart && (
+      {showCart && showButton && (
         <Modal>
           <div
             className='fixed z-50 shadow-modal-box'
