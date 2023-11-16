@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import ColorBox from './components/ColorBox';
+
 import MobileDetail from './components/MobileDetail';
-import RecommendItem from './components/RecommendItem';
+import RecommendItem from './components/RecommendItems';
 import { DUMMY_SHORTS } from '@/dummy_data/shorts';
 import ProductDetail from '@/app/components/ProductDetail';
 
@@ -25,7 +25,7 @@ const Page = ({ params }: { params: { id: string } }) => {
             alt='00123DE'
           />
         </div>
-        <div className='sm:px-8 sm:w-1/3 h-full sticky top-10'>
+        <div className='sm:px-8 sm:w-1/3 h-full sm:sticky top-10'>
           <ProductDetail
             id={productData!.id}
             image={productData!.images[0]}
@@ -38,7 +38,7 @@ const Page = ({ params }: { params: { id: string } }) => {
         </div>
         <MobileDetail sizes={productData!.size} />
       </div>
-      <div className=''>
+      <div className='hidden sm:block'>
         <div className='sm:flex border-b-2 pb-3'>
           <button className='w-1/3 text-2xl font-semibold overline'>
             REVIEW
