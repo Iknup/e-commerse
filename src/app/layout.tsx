@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import BottomNavbar from './components/Navbar/BottomNavbar';
 import Footer from './components/Footer';
 import Providers from './components/Providers';
+import CartGetter from './components/CartGetter';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,10 +23,12 @@ export default function RootLayout({
     <html lang='en'>
       <body className={inter.className}>
         <Providers>
-          <Navbar />
-          {children}
-          <Footer />
-          <BottomNavbar />
+          <CartGetter>
+            <Navbar />
+            {children}
+            <Footer />
+            <BottomNavbar />
+          </CartGetter>
         </Providers>
       </body>
     </html>

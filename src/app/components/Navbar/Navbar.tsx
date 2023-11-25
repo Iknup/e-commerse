@@ -1,30 +1,13 @@
 import Link from 'next/link';
 import TopCartButton from './TopCartButton';
+import SideBar from './SideBar';
 
 const Navbar = () => {
   return (
     <nav className='sticky top-0 z-50 bg-white'>
       <div className='max-w-screen mx-2 mt-2 flex justify-between items-center '>
-        <button>
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            fill='none'
-            viewBox='0 0 24 24'
-            strokeWidth={1.5}
-            stroke='currentColor'
-            className='w-8 h-8'
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              d='M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5'
-            />
-          </svg>
-        </button>
-        <Link
-          href={'/'}
-          className='font-extrabold text-center text-2xl tracking-widest'
-        >
+        <SideBar />
+        <Link href={'/'} className='main-title '>
           SISLEY
         </Link>
         <div className='flex'>

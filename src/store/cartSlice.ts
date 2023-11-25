@@ -10,17 +10,20 @@ export interface cartItemObject {
   price: number;
 }
 
-const cartItemJSON = getCookie('cart');
-const cartItem = cartItemJSON ? JSON.parse(cartItemJSON) : null;
+// const cartItemJSON = getCookie('cart');
+// const cartItem = cartItemJSON ? JSON.parse(cartItemJSON) : null;
 
 const initialState: { cartItems: cartItemObject[] } = {
-  cartItems: cartItem ? [...cartItem] : [],
+  cartItems: [],
 };
 
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
+    setCart: (state, action: PayloadAction<cartItemObject[]>) => {
+      state.cartItems = action.payload;
+    },
     addItem: (
       state,
       action: PayloadAction<{
