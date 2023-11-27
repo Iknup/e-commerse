@@ -41,5 +41,10 @@
   @apply font-extrabold text-center text-2xl tracking-widest;
 }
 
+.side-bar-menu {
+  @apply flex flex-col mx-3 mt-5 pb-10 
+  font-extrabold text-xl border-b-2 border-b-[#bfbfbf];
+}
+
 body {
 }

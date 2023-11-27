@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import TopCartButton from './TopCartButton';
-import SideBar from './SideBar';
+import SideBar from '../Sidebar/SideBar';
 
 const Navbar = () => {
   return (
