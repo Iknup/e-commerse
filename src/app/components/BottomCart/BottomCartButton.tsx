@@ -1,26 +1,18 @@
 'use client';
 
-import IconCart from '@/icons/navbar/IconCart';
 import { useAppSelector } from '@/utils/hooks/reduxHooks';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import Modal from '../Modal';
 import BottomCartBox from './BottomCartBox';
-import CartQuantityNoti from '@/app/cart/components/CartQuantityNoti';
+import useChangeStringOrder from '@/utils/hooks/useChangeStringOrder';
 
 const BottomCartButton = () => {
-  const [showButton, setShowButton] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [rectLeft, setRectLeft] = useState<number>(0);
+  const [text, setText] = useState('CARRITO');
 
   const ref = useRef<HTMLButtonElement>(null);
   const cartItems = useAppSelector((state) => state.cart.cartItems);
-  useEffect(() => {
-    if (cartItems.length > 0) {
-      setShowButton(true);
-    } else {
-      setShowButton(false);
-    }
-  }, [cartItems]);
 
   const setPosition = () => {
     if (ref.current) {
@@ -31,28 +23,27 @@ const BottomCartButton = () => {
 
   return (
     <>
-      <div className='relative'>
+      <div className='flex items-center relative'>
         <button
           ref={ref}
           onMouseEnter={() => {
             setShowCart(true);
             setPosition();
+            useChangeStringOrder('CARRITO', setText);
           }}
           onClick={() => {
             setShowCart((prev) => !prev);
             setPosition();
           }}
           className={
-            'w-14 h-14 mx-4 text-center ' + (showButton ? 'block' : 'hidden')
+            'flex w-14 h-14 mx-4 text-center items-center font-gmarket'
           }
         >
-          <IconCart />
-          <div className={`absolute -top-2 left-2`}>
-            <CartQuantityNoti quantity={cartItems.length} />
-          </div>
+          {text}
+          {cartItems.length > 0 && <p>({cartItems.length})</p>}
         </button>
       </div>
-      {showCart && showButton && (
+      {showCart && cartItems.length > 0 && (
         <Modal>
           <div
             className='fixed z-50 shadow-modal-box'
