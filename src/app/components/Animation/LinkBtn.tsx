@@ -1,6 +1,6 @@
 'use client';
 
-import useChangeStringOrder from '@/utils/hooks/useChangeStringOrder';
+import changeStringOrder from '@/utils/hooks/changeStringOrder';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -18,41 +18,12 @@ const LinkBtn = ({ name, url, className }: Props) => {
     setText(text);
   };
 
-  // const generateRandomString = (length: number) => {
-  //   let text = '';
-  //   const possibleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ%$&#!';
-
-  //   for (let i = 0; i < length; i++) {
-  //     text += possibleChars.charAt(
-  //       Math.floor(Math.random() * possibleChars.length)
-  //     );
-  //   }
-  //   return text;
-  // };
-
-  // const stringOrderChange = () => {
-  //   const intervals: any[] = [];
-  //   for (let i = 0; i < 3; i++) {
-  //     intervals.push(
-  //       setTimeout(
-  //         () => setText(() => generateRandomString(name.length)),
-  //         100 * i
-  //       )
-  //     );
-  //   }
-
-  //   setTimeout(() => {
-  //     intervals.forEach((interval) => clearInterval(interval));
-  //     setText(name);
-  //   }, 100 * 3);
-  // };
-
   const onMouseEnter = () => {
-    useChangeStringOrder(name, textChange);
+    changeStringOrder(name, textChange);
   };
 
   const onClick = () => {
-    useChangeStringOrder(name, textChange);
+    changeStringOrder(name, textChange);
     if (url) {
       setTimeout(() => {
         router.push(url);

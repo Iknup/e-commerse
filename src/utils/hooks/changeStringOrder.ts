@@ -10,7 +10,7 @@ const generateRandomString = (length: number) => {
   return text;
 };
 
-const useChangeStringOrder = (string: string, fx: (text: string) => void) => {
+const changeStringOrder = (string: string, fx: (text: string) => void) => {
   const intervals: any[] = [];
   for (let i = 0; i < 3; i++) {
     intervals.push(
@@ -24,4 +24,4 @@ const useChangeStringOrder = (string: string, fx: (text: string) => void) => {
   }, 100 * 3);
 };
 
-export default useChangeStringOrder;
+export default changeStringOrder;

@@ -4,7 +4,7 @@ import { useAppSelector } from '@/utils/hooks/reduxHooks';
 import { useRef, useState } from 'react';
 import Modal from '../Modal';
 import BottomCartBox from './BottomCartBox';
-import useChangeStringOrder from '@/utils/hooks/useChangeStringOrder';
+import changeStringOrder from '@/utils/hooks/changeStringOrder';
 
 const BottomCartButton = () => {
   const [showCart, setShowCart] = useState(false);
@@ -29,7 +29,7 @@ const BottomCartButton = () => {
           onMouseEnter={() => {
             setShowCart(true);
             setPosition();
-            useChangeStringOrder('CARRITO', setText);
+            changeStringOrder('CARRITO', setText);
           }}
           onClick={() => {
             setShowCart((prev) => !prev);
