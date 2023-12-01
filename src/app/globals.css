@@ -18,13 +18,18 @@
 
 @font-face {
   font-family: 'GmarketSansMedium';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 .color-boxes-container::-webkit-scrollbar {
   display: none;
+}
+
+.button-bg-black {
+  @apply bg-black rounded-lg text-white text-center font-semibold text-xl;
 }
 
 .color-boxes-container {

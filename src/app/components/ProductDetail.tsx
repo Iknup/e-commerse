@@ -8,6 +8,7 @@ import { useAppDispatch } from '@/utils/hooks/reduxHooks';
 import Link from 'next/link';
 import { useOnclickOutside } from '@/utils/hooks/useOnClickOutside';
 import { AnimatePresence, motion } from 'framer-motion';
+import ShakeAnimation from './Animation/ShakeAnimation';
 
 type Props = {
   id: string;
@@ -33,6 +34,7 @@ const ProductDetail = ({
   const [selectedSize, setSelectedSize] = useState<number | null>(null);
   const [scrollPos, setScrollPos] = useState<number>(0);
   const [cartButtonFixed, setCartButtonFixed] = useState(false);
+  const [showSizeAlert, setShowSizeAlert] = useState(false);
   const productNameRef = useRef<HTMLDivElement>(null);
   const cartButtonRef = useRef<HTMLButtonElement>(null);
   const modalBox = useOnclickOutside(() => {
@@ -41,9 +43,9 @@ const ProductDetail = ({
   const dispatch = useAppDispatch();
 
   const onClickAdd = () => {
-    console.log('onclickadd', selectedSize);
     if (typeof selectedSize === 'number') {
       setConfirmedBoxOpened(!confirmedBoxOpened);
+      setShowSizeAlert(false);
       addToCart();
       setTimeout(() => {
         setConfirmedBoxOpened(false);
@@ -54,6 +56,7 @@ const ProductDetail = ({
       } else {
         window.scrollTo(0, 0);
       }
+      setShowSizeAlert(true);
     }
   };
 
@@ -114,7 +117,6 @@ const ProductDetail = ({
   });
 
   const addToCart = () => {
-    console.log(selectedSize);
     const item = {
       productId: id,
       color: color[selectedColor],
@@ -137,11 +139,15 @@ const ProductDetail = ({
       <p className='font-bold text-xl sm:text-2xl mb-5'>{price}$</p>
       <div className='color-boxes-container'>{colors}</div>
       <div className='grid grid-cols-4 gap-2'>{sizes}</div>
+      {showSizeAlert && (
+        <ShakeAnimation>
+          <p>Porfavor, seleccione la talla</p>
+        </ShakeAnimation>
+      )}
       <button
         ref={cartButtonRef}
         onClick={onClickAdd}
-        className={` h-14 bg-black rounded-lg mt-4 text-white 
-text-center font-semibold text-xl mb-4 ${
+        className={` h-14 button-bg-black mt-4  mb-4 ${
           cartButtonFixed ? 'fixed bottom-3 z-50 w-[90%]' : 'w-full'
         }`}
       >
