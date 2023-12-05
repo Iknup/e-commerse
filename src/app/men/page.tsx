@@ -1,6 +1,7 @@
 import { DUMMY_SHORTS } from '@/dummy_data/shorts';
 import Image from 'next/image';
 import ItemGrid from './components/ItemGrid';
+import FilterList from './components/filter/FilterList';
 
 const CATEGORIES = [
   'T-shirts',
@@ -28,23 +29,7 @@ const Page = () => {
         </div>
       </div>
       <div className='max-w-7xl mx-auto px-2'>
-        <div className='flex justify-between'>
-          <div className='flex space-x-2 overflow-auto mt-5 mb-8'>
-            {CATEGORIES.map((category) => {
-              return (
-                <button
-                  key={category}
-                  className='bg-filter-button p-2 rounded-md font-semibold whitespace-nowrap'
-                >
-                  {category}
-                </button>
-              );
-            })}
-          </div>
-          <button className='bg-filter-button p-2 mt-5 mb-8 rounded-md font-semibold'>
-            Filtro
-          </button>
-        </div>
+        <FilterList categories={CATEGORIES} />
         <div className='grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-y-10 place-items-center'>
           {DUMMY_SHORTS.map((short) => {
             return (

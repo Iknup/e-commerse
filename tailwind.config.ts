@@ -22,6 +22,7 @@ const config: Config = {
       },
       colors: {
         'filter-button': '#f2f2f2',
+        'color-greyish': '#bfbfbf',
       },
     },
   },
