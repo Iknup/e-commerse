@@ -33,7 +33,7 @@ const ProductDetail = ({
   const [selectedColor, setSelectedColor] = useState(0);
   const [selectedSize, setSelectedSize] = useState<number | null>(null);
   const [scrollPos, setScrollPos] = useState<number>(0);
-  const [cartButtonFixed, setCartButtonFixed] = useState(false);
+  const [showScrollTopBtn, setShowScrollTopBtn] = useState(false);
   const [showSizeAlert, setShowSizeAlert] = useState(false);
   const productNameRef = useRef<HTMLDivElement>(null);
   const cartButtonRef = useRef<HTMLButtonElement>(null);
@@ -42,6 +42,7 @@ const ProductDetail = ({
   });
   const dispatch = useAppDispatch();
 
+  // add to cart button handler
   const onClickAdd = () => {
     if (typeof selectedSize === 'number') {
       setConfirmedBoxOpened(!confirmedBoxOpened);
@@ -60,15 +61,28 @@ const ProductDetail = ({
     }
   };
 
+  const addToCart = () => {
+    const item = {
+      productId: id,
+      color: color[selectedColor],
+      size: size[selectedSize as number],
+      quantity: 1,
+      price,
+    };
+    dispatch(cartAction.addItem(item));
+  };
+
+  // setting scroll position on button click
   useEffect(() => {
     const nameRefTop = productNameRef.current!.offsetTop;
     setScrollPos(nameRefTop);
   });
 
+  // setting mobile scroll top button appearence
   useEffect(() => {
     const checkScrollTop = () => {
       if (window.innerWidth < 640) {
-        setCartButtonFixed(window.scrollY > cartButtonRef.current!.offsetTop);
+        setShowScrollTopBtn(window.scrollY > cartButtonRef.current!.offsetTop);
       } else return;
     };
 
@@ -78,6 +92,7 @@ const ProductDetail = ({
     };
   }, []);
 
+  // color selections
   const colors = color.map((color, i) => {
     let buttonStyle = 'border-[1px] border-[#d8d8d8] min-w-[32px] h-8 mr-3';
     if (selectedColor === i) {
@@ -95,6 +110,7 @@ const ProductDetail = ({
     );
   });
 
+  // size selections
   const sizes = size.map((size, i) => {
     let sizeButtonStyle =
       'text-center h-7 border-[1px] border-black font-semibold';
@@ -115,17 +131,6 @@ const ProductDetail = ({
       </button>
     );
   });
-
-  const addToCart = () => {
-    const item = {
-      productId: id,
-      color: color[selectedColor],
-      size: size[selectedSize as number],
-      quantity: 1,
-      price,
-    };
-    dispatch(cartAction.addItem(item));
-  };
 
   return (
     <>
@@ -149,12 +154,35 @@ const ProductDetail = ({
       <button
         ref={cartButtonRef}
         onClick={onClickAdd}
-        className={` h-14 button-bg-black mt-4  mb-4 ${
-          cartButtonFixed ? 'fixed bottom-3 z-50 w-[90%]' : 'w-full'
-        }`}
+        className={` h-14 button-bg-black mt-4  mb-4 w-full
+        `}
       >
         Add to Cart
       </button>
+      {showScrollTopBtn && (
+        <button
+          onClick={() => {
+            window.scrollTo(0, scrollPos);
+          }}
+          className='fixed bottom-3 right-3 z-50 rounded-full bg-white 
+          shadow-modal-box p-1'
+        >
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 24 24'
+            strokeWidth={1.5}
+            stroke='currentColor'
+            className='w-8 h-8'
+          >
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              d='M4.5 15.75l7.5-7.5 7.5 7.5'
+            />
+          </svg>
+        </button>
+      )}
       <AnimatePresence>
         {confirmedBoxOpened && (
           <Modal>

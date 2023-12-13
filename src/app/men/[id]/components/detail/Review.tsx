@@ -79,6 +79,7 @@ const Review = ({ reviews, prodId }: Props) => {
 
     return (
       <ReviewPercentageBar
+        key={rate}
         rate={rate}
         timesRated={timesRated}
         percentage={percentage}

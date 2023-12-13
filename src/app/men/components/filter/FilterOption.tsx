@@ -31,6 +31,7 @@ const FilterOption = ({ turnOff }: { turnOff: () => void }) => {
 
     return (
       <button
+        key={i}
         onClick={() => {
           setSelectedOrder(i);
         }}

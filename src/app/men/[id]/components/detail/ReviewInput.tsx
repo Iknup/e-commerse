@@ -115,7 +115,7 @@ const ReviewInput = ({ prodId, hasReview }: Props) => {
         reviewInput
       ) : (
         <div className='text-center'>
-          <p>"Aun tenemos review para el producto"</p>
+          <p>&#34;Aun tenemos review para el producto&#34;</p>
           <h1 className='text-3xl mt-5 '>Podrás escribir el primer review?</h1>
           <div className='flex justify-center my-16'>{starArray}</div>
         </div>
