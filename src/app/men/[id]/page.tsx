@@ -1,6 +1,5 @@
 import Image from 'next/image';
 
-import MobileDetail from './components/MobileDetail';
 import RecommendItem from './components/RecommendItems';
 import { DUMMY_SHORTS } from '@/dummy_data/shorts';
 import ProductDetail from '@/app/components/ProductDetail';
