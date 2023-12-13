@@ -29,7 +29,7 @@ const HashTags = ({
   const hashTags = hashtagLists.map((hashtag, i) => {
     return <HashTagItem key={i} hashTag={hashtag} setActiveTag={onHtagClick} />;
   });
-  return <div className='flex gap-x-3'>{hashTags}</div>;
+  return <div className='flex flex-wrap gap-x-2'>{hashTags}</div>;
 };
 
 export default HashTags;

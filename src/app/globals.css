@@ -32,6 +32,10 @@
   @apply bg-black rounded-lg text-white text-center font-semibold text-xl;
 }
 
+.long-description {
+  @apply text-[#333333] -tracking-[0.025em];
+}
+
 .color-boxes-container {
   display: flex;
   overflow-x: auto;
@@ -57,8 +61,6 @@
   @apply flex flex-col mx-3 mt-5 pb-10 
   font-extrabold text-xl border-b-2 border-b-[#bfbfbf];
 }
-
-
 
 body {
 }

@@ -4,6 +4,7 @@ import MobileDetail from './components/MobileDetail';
 import RecommendItem from './components/RecommendItems';
 import { DUMMY_SHORTS } from '@/dummy_data/shorts';
 import ProductDetail from '@/app/components/ProductDetail';
+import Review from './components/detail/Review';
 
 const getProductDetail = (id: string) => {
   const product = DUMMY_SHORTS.find((short) => short.id === id);
@@ -36,55 +37,13 @@ const Page = ({ params }: { params: { id: string } }) => {
             color={productData!.color}
           />
         </div>
-        <MobileDetail sizes={productData!.size} />
       </div>
-      <div className='hidden sm:block'>
-        <div className='sm:flex border-b-2 pb-3'>
-          <button className='w-1/3 text-2xl font-semibold overline'>
-            REVIEW
-          </button>
-          <button className='w-2/3 text-center text-2xl font-semibold'>
-            DESCRIPCIÓN
-          </button>
-        </div>
-        <div className='flex items-center'>
-          <div className='sm:flex text-3xl'>
-            <div className='w-40 h-32 pl-8 flex items-center border-r-2'>
-              {productData!.review
-                ? (
-                    productData!.review.reduce(
-                      (acc, review) => acc + review.rating,
-                      0
-                    ) / productData!.review.length
-                  ).toFixed(1) + '/5'
-                : '0/0'}
-            </div>
-          </div>
-          <p className='pl-3'>
-            Total Review:{productData!.review?.length} <br />
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa,
-            praesentium quas repellendus facilis recusandae illo nihil
-            consectetur rem magni. Repellendus magnam pariatur necessitatibus
-            reprehenderit! Voluptates reiciendis labore dignissimos? Ex, maxime.
-          </p>
-        </div>
-        <div className='mb-10'>
-          {productData!.review
-            ? productData!.review.map((review) => {
-                return (
-                  <div key={review.id} className='flex px-2'>
-                    <p className='mr-3'>{review.rating}/5</p>
-                    <div>
-                      <p className='font-bold '>{review.user}</p>
-                      <p>{review.review}</p>
-                    </div>
-                  </div>
-                );
-              })
-            : 'No hay review'}
-        </div>
+      <div className='border-t-2 mt-10'>
+        {productData?.review && (
+          <Review reviews={productData?.review} prodId={params.id} />
+        )}
       </div>
-      <div className='w-full'>
+      <div className='w-full mt-10'>
         <RecommendItem />
       </div>
     </main>

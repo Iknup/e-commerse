@@ -16,7 +16,7 @@ const item03: Item = {
     {
       id: '001',
       user: 'Nier J',
-      rating: 4.5,
+      rating: 5,
       review:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     },
@@ -64,6 +64,37 @@ const item05: Item = {
       review:
         'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     },
+    {
+      id: '004',
+      user: 'Yuna',
+      rating: 4,
+      review:
+        'Wolf wolf wolf wolf wolf wolf wolf wolf wolf wolf wolf wolf wolf wolf ',
+    },
+    {
+      id: '005',
+      user: 'Mel',
+      rating: 3,
+      review: 'Tengo hambre',
+    },
+    {
+      id: '006',
+      user: 'Papa noel',
+      rating: 1,
+      review: 'Feliz navidad!',
+    },
+    {
+      id: '007',
+      user: 'James Bond',
+      rating: 5,
+      review: 'I am James Bond',
+    },
+    {
+      id: '008',
+      user: 'Minolta',
+      rating: 4,
+      review: 'Jo jo jo jo jo jo jo jo jo jo jo jo jo jo',
+    },
   ],
 };
 
@@ -91,7 +122,7 @@ const item08: Item = {
     {
       id: '001',
       user: 'MelYuna',
-      rating: 4.5,
+      rating: 4,
       review:
         'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
     },
@@ -129,7 +160,7 @@ const item12: Item = {
     {
       id: '002',
       user: 'YesikPink',
-      rating: 4.5,
+      rating: 4,
       review:
         'Lo compre para el regalo de mi novio, le queda mas hermoso que nunca!',
     },
@@ -198,9 +229,7 @@ const item17: Item = {
   ],
   hashtag: ['new'],
   size: ['xs', 's', 'm', 'l', 'xl'],
-  review: [
-    { id: '001', user: '17', rating: 3, review: '171717171717171717171717' },
-  ],
+  review: [],
 };
 
 export const DUMMY_SHORTS: Item[] = [

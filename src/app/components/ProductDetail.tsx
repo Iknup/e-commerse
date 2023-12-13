@@ -135,13 +135,15 @@ const ProductDetail = ({
       >
         {name}
       </h1>
-      <p className='w-full mb-5 text-sm h-32 overflow-hidden'>{detail}</p>
+      <p className='w-full mb-5 text-sm h-32 overflow-hidden long-description'>
+        {detail}
+      </p>
       <p className='font-bold text-xl sm:text-2xl mb-5'>{price}$</p>
       <div className='color-boxes-container'>{colors}</div>
       <div className='grid grid-cols-4 gap-2'>{sizes}</div>
       {showSizeAlert && (
         <ShakeAnimation>
-          <p>Porfavor, seleccione la talla</p>
+          <p className=' text-red-500'>*Porfavor, seleccione la talla</p>
         </ShakeAnimation>
       )}
       <button

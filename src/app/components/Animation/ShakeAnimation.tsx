@@ -3,7 +3,10 @@ import { motion } from 'framer-motion';
 
 const ShakeAnimation = ({ children }: PropsWithChildren) => {
   return (
-    <motion.div animate={{ translateX: [20, -20, 10, -10, 0] }}>
+    <motion.div
+      animate={{ translateX: [10, -10, 10, -10, 10, -10, 10, -10, 0] }}
+      transition={{ stiffness: 0 }}
+    >
       {children}
     </motion.div>
   );

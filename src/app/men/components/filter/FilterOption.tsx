@@ -19,10 +19,10 @@ const FilterOption = ({ turnOff }: { turnOff: () => void }) => {
   const [priceRange, setPriceRange] = useState({ min: 0, max: 200 });
   const [activeHtags, setActiveHtags] = useState<string[]>([]);
 
-  const h1 = 'font-bold text-xl';
-  const sectionStyle = 'border-b-2 border-b-color-greyish pb-5 mb-2';
+  const h1 = 'font-bold text-xl mb-3';
+  const sectionStyle = 'border-b-2 border-b-[#d8d8d8] pb-5 mb-2';
   const buttonStyle =
-    'bg-black rounded-lg text-white text-center font-semibold py-1 px-3 w-[40%]';
+    'bg-black rounded-[5px] text-white text-center font-semibold w-full h-[45px]';
 
   const orderButtons = orderOptions.map((order, i) => {
     const buttonStyle = `w-4 h-4 rounded-full border-[1px] border-black ${
@@ -57,10 +57,10 @@ const FilterOption = ({ turnOff }: { turnOff: () => void }) => {
   border-r-[10px] border-r-transparent'
       ></div>
       <div
-        className='max-w-full min-w-[300px] bg-white border-2 
-      border-color-greyish px-4 py-2'
+        className='w-[400px] bg-white border-2 
+      border-color-greyish p-[10px]'
       >
-        <div className='flex justify-between '>
+        <div className='flex justify-between mb-5'>
           <h1 className='main-title '>FILTRO</h1>
           <button
             onClick={() => {
@@ -85,10 +85,10 @@ const FilterOption = ({ turnOff }: { turnOff: () => void }) => {
         </div>
         <div className={sectionStyle}>
           <h1 className={h1}>Ordenar por</h1>
-          {orderButtons}
+          <div className='flex flex-col gap-y-1'>{orderButtons}</div>
         </div>
         <div className={sectionStyle}>
-          <h1 className={h1}>Price</h1>
+          <h1 className={h1}>Precio</h1>
           <PriceRange
             setRange={(obj: { min: number; max: number }) => {
               setPriceRange(obj);
@@ -97,17 +97,17 @@ const FilterOption = ({ turnOff }: { turnOff: () => void }) => {
         </div>
         <div className={sectionStyle}>
           <h1 className={h1}>TALLA</h1>
-          <div className='flex gap-x-2'>
+          <div className='flex gap-x-1'>
             {sizes.map((size) => {
               return <SizeBox size={size} />;
             })}
           </div>
         </div>
-        <div className={sectionStyle}>
+        <div className='pb-5 mb-2'>
           <h1 className={h1}>ETIQUETA</h1>
           <HashTags setHtag={setActiveHtags} activeHtags={activeHtags} />
         </div>
-        <div className='flex justify-evenly mb-5 items-center'>
+        <div className='flex justify-between items-center gap-x-[10px]'>
           <button onClick={onClickApply} className={buttonStyle}>
             APLICAR
           </button>
