@@ -100,7 +100,7 @@ const FilterOption = ({ turnOff }: { turnOff: () => void }) => {
           <h1 className={h1}>TALLA</h1>
           <div className='flex gap-x-1'>
             {sizes.map((size) => {
-              return <SizeBox size={size} />;
+              return <SizeBox key={size} size={size} />;
             })}
           </div>
         </div>

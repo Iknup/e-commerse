@@ -89,7 +89,7 @@ const Review = ({ reviews, prodId }: Props) => {
 
   const reviewText = reviews!.map((review) => {
     return (
-      <div id={review.id} className='flex'>
+      <div key={review.id} id={review.id} className='flex'>
         <div className='text-lg mr-5 text-center'>{review.rating}/5</div>
         <div>
           <h1 className='text-lg mb-2 font-semibold'>{review.user}</h1>
