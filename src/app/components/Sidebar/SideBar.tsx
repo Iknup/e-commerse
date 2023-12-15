@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import SideBarMain from './SideBarMain';
 import SideBarMan from './SideBarMan';
 import { useOnclickOutside } from '@/utils/hooks/useOnClickOutside';
+import Link from 'next/link';
 
 export enum MenuState {
   Main = 'main',
@@ -123,10 +124,9 @@ const SideBar = () => {
                 </motion.div>
               )}
             </AnimatePresence>
-
-            <button
-              className='flex justify-between mx-3 mt-10 font-extrabold 
-        text-xl'
+            <Link
+              href={'/about'}
+              className='flex justify-between mx-3 mt-10 font-extrabold text-xl'
             >
               <h1>SOBRE NOSOTROS</h1>
               <svg
@@ -143,7 +143,7 @@ const SideBar = () => {
                   d='M8.25 4.5l7.5 7.5-7.5 7.5'
                 />
               </svg>
-            </button>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>
