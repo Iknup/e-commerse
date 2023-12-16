@@ -5,6 +5,7 @@ import SideBarMain from './SideBarMain';
 import SideBarMan from './SideBarMan';
 import { useOnclickOutside } from '@/utils/hooks/useOnClickOutside';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export enum MenuState {
   Main = 'main',
@@ -15,6 +16,8 @@ export enum MenuState {
 const SideBar = () => {
   const [showSideBar, setShowSideBar] = useState(false);
   const [menuState, setMenuState] = useState(MenuState.Main);
+
+  const router = useRouter();
 
   const changeMenuState = (state: MenuState) => {
     setMenuState(state);
@@ -29,9 +32,7 @@ const SideBar = () => {
   });
 
   return (
-    <div
-    // ref={sideBar}
-    >
+    <div ref={sideBar}>
       <button
         onClick={() => {
           setShowSideBar(true);
@@ -89,7 +90,7 @@ const SideBar = () => {
               </button>
               <h1 className='grow main-title'>SISLEY</h1>
             </div>
-            <AnimatePresence mode='wait'>
+            <AnimatePresence mode='wait' initial={false}>
               {menuState === MenuState.Main && (
                 <motion.div
                   key={MenuState.Main}
@@ -124,8 +125,11 @@ const SideBar = () => {
                 </motion.div>
               )}
             </AnimatePresence>
-            <Link
-              href={'/about'}
+            <button
+              onClick={() => {
+                router.push('/about');
+                setShowSideBar(false);
+              }}
               className='flex justify-between mx-3 mt-10 font-extrabold text-xl'
             >
               <h1>SOBRE NOSOTROS</h1>
@@ -143,7 +147,7 @@ const SideBar = () => {
                   d='M8.25 4.5l7.5 7.5-7.5 7.5'
                 />
               </svg>
-            </Link>
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
