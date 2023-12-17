@@ -63,4 +63,5 @@
 }
 
 body {
+  @apply bg-white;
 }

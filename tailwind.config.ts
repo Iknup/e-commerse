@@ -7,6 +7,10 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    colors: {
+      white: '#f7f7f7',
+      black: '#111111',
+    },
     extend: {
       fontFamily: {
         gmarket: ['GmarketSansMedium', 'sans-serif'],

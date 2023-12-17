@@ -32,7 +32,10 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <main className='hidden sm:flex min-h-screen w-full flex-col items-center'>
+      <main
+        className='bg-white hidden sm:flex min-h-screen w-full
+       flex-col items-center'
+      >
         <div className='mt-5'>
           <MainSlider
             src={['/main-man01.jpg', '/main-man02.jpg']}
