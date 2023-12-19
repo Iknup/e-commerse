@@ -76,7 +76,7 @@ const ReviewInput = ({ prodId, hasReview }: Props) => {
       <div className='flex flex-col gap-y-1'>
         <textarea
           ref={textAreaRef}
-          className='w-full border-2 p-1'
+          className='w-full border-2 p-1 bg-white'
           name='review'
           id='review'
           cols={30}

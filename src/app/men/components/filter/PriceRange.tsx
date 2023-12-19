@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Slider } from '@mui/material';
 import { useState, useRef, useLayoutEffect, useEffect } from 'react';
 
 const PriceRange = ({
@@ -8,31 +9,39 @@ const PriceRange = ({
 }: {
   setRange: ({}: { min: number; max: number }) => void;
 }) => {
-  const [leftDot, setLeftDot] = useState(0);
-  const [rightDot, setRightDot] = useState(0);
-  const [priceRange, setPriceRange] = useState(0);
-  const [lineLeftPos, setLineLeftPos] = useState(0);
+  // const [leftDot, setLeftDot] = useState(0);
+  // const [rightDot, setRightDot] = useState(0);
+  // const [priceRange, setPriceRange] = useState(0);
+  // const [lineLeftPos, setLineLeftPos] = useState(0);
 
-  const priceLineRef = useRef<HTMLDivElement>(null);
+  // const priceLineRef = useRef<HTMLDivElement>(null);
 
-  const [minPrice, maxPrice] = [
-    leftDot > 0 ? (200 * (leftDot / priceRange)).toFixed(2) : 0,
-    rightDot > priceRange - 10
-      ? 200
-      : (200 - 200 * ((priceRange - rightDot) / priceRange)).toFixed(2),
-  ];
+  // const [minPrice, maxPrice] = [
+  //   leftDot > 0 ? (200 * (leftDot / priceRange)).toFixed(2) : 0,
+  //   rightDot > priceRange - 10
+  //     ? 200
+  //     : (200 - 200 * ((priceRange - rightDot) / priceRange)).toFixed(2),
+  // ];
 
-  useEffect(() => {
-    setRange({ min: +minPrice, max: +maxPrice });
-  }, [minPrice, maxPrice]);
+  // useEffect(() => {
+  //   setRange({ min: +minPrice, max: +maxPrice });
+  // }, [minPrice, maxPrice]);
 
-  useLayoutEffect(() => {
-    if (priceLineRef.current) {
-      setPriceRange(priceLineRef.current.offsetWidth);
-      setRightDot(priceLineRef.current.offsetWidth);
-      setLineLeftPos(priceLineRef.current.getBoundingClientRect().left);
-    }
-  }, []);
+  // useLayoutEffect(() => {
+  //   if (priceLineRef.current) {
+  //     setPriceRange(priceLineRef.current.offsetWidth);
+  //     setRightDot(priceLineRef.current.offsetWidth);
+  //     setLineLeftPos(priceLineRef.current.getBoundingClientRect().left);
+  //   }
+  // }, []);
+
+  const [value, setValue] = useState([0, 200]);
+
+  const [minPrice, maxPrice] = value;
+
+  const onChangeValue = (event: Event, newValue: number | number[]) => {
+    setValue(newValue as number[]);
+  };
 
   return (
     <>
@@ -42,7 +51,17 @@ const PriceRange = ({
         </p>
       </div>
       <div className='h-3 relative mx-5'>
-        <motion.div
+        <Slider
+          min={0}
+          max={200}
+          value={value}
+          onChange={onChangeValue}
+          disableSwap
+          sx={{
+            color: '#111111',
+          }}
+        />
+        {/* <motion.div
           drag='x'
           onDrag={(event, info) => {
             setLeftDot(info.point.x - lineLeftPos);
@@ -64,7 +83,7 @@ const PriceRange = ({
           dragElastic={0}
           dragMomentum={false}
           className='w-2 h-2 bg-black rounded-full absolute right-0 -top-[3px]'
-        />
+        /> */}
       </div>
     </>
   );

@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { useOnclickOutside } from '@/utils/hooks/useOnClickOutside';
 import { AnimatePresence, motion } from 'framer-motion';
 import ShakeAnimation from './Animation/ShakeAnimation';
+import { Fab } from '@mui/material';
 
 type Props = {
   id: string;
@@ -160,19 +161,24 @@ const ProductDetail = ({
         Add to Cart
       </button>
       {showScrollTopBtn && (
-        <button
+        <Fab
           onClick={() => {
             window.scrollTo(0, scrollPos);
           }}
-          className='fixed bottom-3 right-3 z-50 rounded-full bg-white 
-          shadow-modal-box p-1'
+          sx={{
+            color: '#f7f7f7',
+            position: 'fixed',
+            bottom: '12px',
+            right: '12px',
+            zIndex: 50,
+          }}
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
             viewBox='0 0 24 24'
             strokeWidth={1.5}
-            stroke='currentColor'
+            stroke='#111111'
             className='w-14 h-14'
           >
             <path
@@ -181,7 +187,29 @@ const ProductDetail = ({
               d='M4.5 15.75l7.5-7.5 7.5 7.5'
             />
           </svg>
-        </button>
+        </Fab>
+        // <button
+        //   onClick={() => {
+        //     window.scrollTo(0, scrollPos);
+        //   }}
+        //   className='fixed bottom-3 right-3 z-50 rounded-full bg-white
+        //   shadow-modal-box p-1'
+        // >
+        //   <svg
+        //     xmlns='http://www.w3.org/2000/svg'
+        //     fill='none'
+        //     viewBox='0 0 24 24'
+        //     strokeWidth={1.5}
+        //     stroke='currentColor'
+        //     className='w-14 h-14'
+        //   >
+        //     <path
+        //       strokeLinecap='round'
+        //       strokeLinejoin='round'
+        //       d='M4.5 15.75l7.5-7.5 7.5 7.5'
+        //     />
+        //   </svg>
+        // </button>
       )}
       <AnimatePresence>
         {confirmedBoxOpened && (

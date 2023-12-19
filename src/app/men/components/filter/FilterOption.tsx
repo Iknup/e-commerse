@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, Dispatch } from 'react';
+import { Checkbox } from '@mui/material';
 import PriceRange from './PriceRange';
 import SizeBox from '../../[id]/components/detail/SizeBox';
 import HashTags from './HashTags';
@@ -30,16 +31,29 @@ const FilterOption = ({ turnOff }: { turnOff: () => void }) => {
     }`;
 
     return (
-      <button
+      <div
         key={i}
-        onClick={() => {
-          setSelectedOrder(i);
-        }}
         className='flex w-full items-center justify-between pl-2 pr-1'
       >
         <p>{order}</p>
-        <div className={buttonStyle}></div>
-      </button>
+        <Checkbox
+          sx={{
+            '&.Mui-checked': {
+              color: '#111111',
+            },
+          }}
+        />
+      </div>
+      // <button
+      //   key={i}
+      //   onClick={() => {
+      //     setSelectedOrder(i);
+      //   }}
+      //   className='flex w-full items-center justify-between pl-2 pr-1'
+      // >
+      //   <p>{order}</p>
+      //   <div className={buttonStyle}></div>
+      // </button>
     );
   });
 
