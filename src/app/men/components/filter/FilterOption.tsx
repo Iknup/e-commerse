@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, Dispatch } from 'react';
+import { useState, Dispatch, ChangeEvent } from 'react';
 import { Checkbox } from '@mui/material';
 import PriceRange from './PriceRange';
 import SizeBox from '../../[id]/components/detail/SizeBox';
@@ -30,6 +30,13 @@ const FilterOption = ({ turnOff }: { turnOff: () => void }) => {
       selectedOrder === i ? 'bg-black' : ''
     }`;
 
+    const onChange = (
+      event: ChangeEvent<HTMLInputElement>,
+      checked: boolean
+    ) => {
+      setSelectedOrder(i);
+    };
+
     return (
       <div
         key={i}
@@ -42,18 +49,10 @@ const FilterOption = ({ turnOff }: { turnOff: () => void }) => {
               color: '#111111',
             },
           }}
+          checked={selectedOrder === i}
+          onChange={onChange}
         />
       </div>
-      // <button
-      //   key={i}
-      //   onClick={() => {
-      //     setSelectedOrder(i);
-      //   }}
-      //   className='flex w-full items-center justify-between pl-2 pr-1'
-      // >
-      //   <p>{order}</p>
-      //   <div className={buttonStyle}></div>
-      // </button>
     );
   });
 
@@ -66,13 +65,7 @@ const FilterOption = ({ turnOff }: { turnOff: () => void }) => {
   return (
     <div>
       <div
-        className='w-0 h-0 ml-auto mr-5
-  border-l-[10px] border-l-transparent
-  border-b-[15px] border-b-white
-  border-r-[10px] border-r-transparent'
-      ></div>
-      <div
-        className='w-[400px] bg-white border-2 
+        className='w-full sm:w-[400px] bg-white border-2 
       border-color-greyish p-[10px]'
       >
         <div className='flex justify-between mb-5'>

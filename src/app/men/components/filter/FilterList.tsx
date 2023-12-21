@@ -46,7 +46,7 @@ const FilterList = ({ categories }: Props) => {
         Filtro
       </button>
       {showFilter && (
-        <div className='z-50 absolute top-12 right-0'>
+        <div className='z-50 fixed bottom-0 sm:absolute sm:top-12 sm:right-0'>
           <FilterOption
             turnOff={() => {
               setShowFilter(false);

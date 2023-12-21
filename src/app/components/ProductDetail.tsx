@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { useOnclickOutside } from '@/utils/hooks/useOnClickOutside';
 import { AnimatePresence, motion } from 'framer-motion';
 import ShakeAnimation from './Animation/ShakeAnimation';
-import { Fab } from '@mui/material';
+import { Fab, Alert } from '@mui/material';
 
 type Props = {
   id: string;
@@ -125,6 +125,7 @@ const ProductDetail = ({
         key={size}
         onClick={() => {
           setSelectedSize(i);
+          setShowSizeAlert(false);
         }}
         className={sizeButtonStyle}
       >
@@ -149,7 +150,9 @@ const ProductDetail = ({
       <div className='grid grid-cols-4 gap-2'>{sizes}</div>
       {showSizeAlert && (
         <ShakeAnimation>
-          <p className=' text-red-500'>*Porfavor, seleccione la talla</p>
+          <Alert sx={{ mt: '12px' }} severity='error'>
+            Porfavor, seleccione la talla
+          </Alert>
         </ShakeAnimation>
       )}
       <button
@@ -188,28 +191,6 @@ const ProductDetail = ({
             />
           </svg>
         </Fab>
-        // <button
-        //   onClick={() => {
-        //     window.scrollTo(0, scrollPos);
-        //   }}
-        //   className='fixed bottom-3 right-3 z-50 rounded-full bg-white
-        //   shadow-modal-box p-1'
-        // >
-        //   <svg
-        //     xmlns='http://www.w3.org/2000/svg'
-        //     fill='none'
-        //     viewBox='0 0 24 24'
-        //     strokeWidth={1.5}
-        //     stroke='currentColor'
-        //     className='w-14 h-14'
-        //   >
-        //     <path
-        //       strokeLinecap='round'
-        //       strokeLinejoin='round'
-        //       d='M4.5 15.75l7.5-7.5 7.5 7.5'
-        //     />
-        //   </svg>
-        // </button>
       )}
       <AnimatePresence>
         {confirmedBoxOpened && (
