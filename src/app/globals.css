@@ -24,6 +24,25 @@
   font-style: normal;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.slide-height {
+  height: calc(100vh - 120px);
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@layer base {
+  html {
+    @apply no-scrollbar overflow-y-auto snap-y;
+  }
+}
+
 .color-boxes-container::-webkit-scrollbar {
   display: none;
 }
@@ -65,4 +84,3 @@
 body {
   @apply bg-white;
 }
-

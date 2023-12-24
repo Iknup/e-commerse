@@ -6,7 +6,7 @@ const BottomNavbar = () => {
   const buttonStyle = 'h-14 mx-4 text-center flex items-center';
 
   return (
-    <nav className='z-50 sticky bottom-0 bg-white hidden md:flex h-[90px]'>
+    <nav className='z-50 sticky bottom-0 bg-black text-white hidden md:flex h-[90px]'>
       <div className='flex mx-auto items-center pb-2 font-gmarket'>
         <LinkBtn name='HOME' url='/' className={buttonStyle} />/
         <LinkBtn name='HOMBRE' url='/men' className={buttonStyle} />
