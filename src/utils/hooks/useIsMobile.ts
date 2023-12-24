@@ -4,6 +4,8 @@ const useIsMobile = () => {
   const [width, setWidth] = useState<number>(0);
 
   useEffect(() => {
+    setWidth(window.innerWidth);
+
     const handleWidthSizeChange = () => {
       setWidth(window.innerWidth);
     };
