@@ -24,6 +24,14 @@
   font-style: normal;
 }
 
+body {
+  scroll-snap-type: y mandatory;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

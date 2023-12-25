@@ -1,110 +1,31 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import categoryManPic from '@/../public/home_crop_01.jpg';
+import categoryWomanPic from '@/../public/home_crop_02.jpg';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const MainPageSlider = () => {
-  const [slideIndex, setSlideIndex] = useState<number>(0);
   const [isMobile, setIsMobile] = useState<boolean>(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const slideTwo = useRef<HTMLDivElement>(null);
   const slideHeight = isMobile ? 'h-[100vh]' : 'slide-height';
+  const slideStyle =
+    'transform transition duration-1000 ease-in-out' + ' ' + slideHeight;
 
-  // handling slide index changes
-  const changeIndex = (direction: string) => {
-    let newIndex = direction === 'up' ? slideIndex - 1 : slideIndex + 1;
-
-    console.log('isMobile:', isMobile);
-
-    if (newIndex < 0) {
-      newIndex = 0;
-    } else if (isMobile && newIndex > 2) {
-      console.log('shibal:', newIndex);
-      newIndex = 2;
-    } else if (!isMobile && newIndex > 1) {
-      console.log('eh');
-      newIndex = 1;
-    }
-
-    console.log('newIndex:', newIndex);
-
-    setSlideIndex(newIndex);
-  };
-
-  //change slide index on scroll
   useEffect(() => {
     setIsMobile(window.innerWidth < 640);
-
-    let lastScrollTop = window.scrollY || document.documentElement.scrollTop;
-
-    // handling scroll
-    const handleScroll = () => {
-      const threshold = 100;
-      let scrollDirection: string;
-      const scrollTopPosition =
-        window.scrollY || document.documentElement.scrollTop;
-
-      if (scrollTopPosition > lastScrollTop + threshold) {
-        scrollDirection = 'down';
-      } else if (scrollTopPosition < lastScrollTop - threshold) {
-        scrollDirection = 'up';
-      } else {
-        return;
-      }
-
-      lastScrollTop = scrollTopPosition <= 0 ? 0 : scrollTopPosition;
-
-      console.log(scrollDirection);
-
-      changeIndex(scrollDirection);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
   }, []);
 
-  useEffect(() => {
-    let height;
-    const slideElement = containerRef.current;
-    if (slideElement) {
-      const style = window.getComputedStyle(slideElement);
-      height = parseInt(style.height);
+  const handleButtonClick = () => {
+    if (slideTwo.current) {
+      slideTwo.current.scrollIntoView({ behavior: 'instant' });
     }
-
-    let targetScrollPosition = slideIndex * height!;
-
-    const animateScroll = (targetScrollPosition: number) => {
-      const startTime = performance.now();
-      const endTime = startTime + 700;
-
-      const step = (timestamp: number) => {
-        const progress = Math.min(
-          (timestamp - startTime) / (endTime - startTime),
-          1
-        );
-        window.scrollTo(
-          0,
-          (1 - progress) * window.scrollY + progress * targetScrollPosition
-        );
-
-        if (progress < 1) {
-          window.requestAnimationFrame(step);
-        }
-      };
-
-      window.requestAnimationFrame(step);
-    };
-
-    animateScroll(targetScrollPosition);
-  }, [slideIndex]);
+  };
 
   const slideOne = (
     <div
-      ref={containerRef}
-      className={`flex justify-center w-full ${slideHeight} items-center relative
+      className={`snap-center flex justify-center w-full ${slideStyle} items-center relative
       `}
     >
       <h1
@@ -116,9 +37,7 @@ sm:text-[9rem] text-white sm:tracking-[0.8em] '
         SISLEY
       </h1>
       <button
-        onClick={() => {
-          changeIndex('down');
-        }}
+        onClick={handleButtonClick}
         className='absolute bottom-32 left-1/2 -translate-x-[50%]'
       >
         <svg
@@ -141,37 +60,47 @@ sm:text-[9rem] text-white sm:tracking-[0.8em] '
 
   return (
     <div className={'w-full '}>
-      <div className='w-full '>
+      <div
+        className={`scroll-smooth w-full ${slideHeight} snap-y snap-mandatory 
+        overflow-auto no-scrollbar`}
+      >
         {slideOne}
         <div
+          ref={slideTwo}
           className={` w-full grid sm:grid-cols-2 
         `}
         >
-          <div className={`relative group ${slideHeight}`}>
-            <Image src={'/home_crop_01.jpg'} fill alt='home_man' />
+          <div className={`snap-center  group ${slideStyle}`}>
+            <Image src={categoryManPic} fill alt='home_man' />
             <div
-              className='absolute top-0 w-full h-full bg-opacity-50 bg-black flex sm:hidden items-center 
-    justify-center 
-    sm:group-hover:flex
+              className='absolute top-0 w-full h-full bg-opacity-50 bg-black 
+              flex sm:hidden items-center sm:justify-center sm:group-hover:flex
     sm:group-hover:bg-black sm:group-hover:bg-opacity-50 text-white '
             >
-              <Link href={'/men'} className='text-center text-xl font-bold'>
-                <p>SISLEY</p>
-                <p className='overline'>HOMBRE</p>
+              <Link
+                href={'/men'}
+                className='ml-[3rem] sm:ml-0 tracking-widest text-center text-3xl 
+                 font-bold'
+              >
+                <p>HOMBRE</p>
+                <p className='text-xl font-normal sm:overline'>SISLEY</p>
               </Link>
             </div>
           </div>
-          <div className={`relative group ${slideHeight}`}>
-            <Image src={'/home_crop_02.jpg'} fill alt='home_woman' />
+          <div className={` group ${slideStyle} snap-center sm:snap-none`}>
+            <Image src={categoryWomanPic} fill alt='home_woman' />
             <div
-              className='absolute top-0 w-full h-full bg-opacity-50 bg-black flex sm:hidden items-center 
-    justify-center 
-    sm:group-hover:flex
+              className='absolute top-0 w-full h-full bg-opacity-50 bg-black
+               flex sm:hidden items-center justify-end sm:justify-center sm:group-hover:flex
     sm:group-hover:bg-black sm:group-hover:bg-opacity-50 text-white '
             >
-              <Link href={'/'} className='text-center text-xl font-bold'>
-                <p>SISLEY</p>
-                <p className='overline'>MUJER</p>
+              <Link
+                href={'/'}
+                className='mr-[3rem] sm:mr-0 tracking-widest text-center text-3xl 
+                 font-bold'
+              >
+                <p>MUJER</p>
+                <p className='text-xl font-normal sm:overline'>SISLEY</p>
               </Link>
             </div>
           </div>
