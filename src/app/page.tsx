@@ -8,7 +8,7 @@ import MainPageSlider from './components/Main/MainPageSlider';
 export default function Home() {
   return (
     <>
-      <main className='sm:hidden'>
+      {/* <main className='sm:hidden'>
         <div className='flex justify-center items-center bg-black w-full h-screen'>
           <div className='text-center text-white pb-5'>
             <h1 className='font-extrabold  text-5xl tracking-[0.25em] mb-5'>
@@ -32,7 +32,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </main>
+      </main> */}
       <main className='w-full h-full bg-black '>
         <MainPageSlider />
       </main>

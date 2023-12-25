@@ -1,28 +1,37 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const MainPageSlider = () => {
   const [slideIndex, setSlideIndex] = useState<number>(0);
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const slideHeight = isMobile ? 'h-[100vh]' : 'slide-height';
 
   // handling slide index changes
-  const changeSlide = (direction: string, isMobile: boolean) => {
+  const changeIndex = (direction: string) => {
     let newIndex = direction === 'up' ? slideIndex - 1 : slideIndex + 1;
+
+    console.log('isMobile:', isMobile);
 
     if (newIndex < 0) {
       newIndex = 0;
     } else if (isMobile && newIndex > 2) {
+      console.log('shibal:', newIndex);
       newIndex = 2;
     } else if (!isMobile && newIndex > 1) {
+      console.log('eh');
       newIndex = 1;
     }
+
+    console.log('newIndex:', newIndex);
 
     setSlideIndex(newIndex);
   };
 
+  //change slide index on scroll
   useEffect(() => {
     setIsMobile(window.innerWidth < 640);
 
@@ -30,13 +39,14 @@ const MainPageSlider = () => {
 
     // handling scroll
     const handleScroll = () => {
+      const threshold = 100;
       let scrollDirection: string;
       const scrollTopPosition =
         window.scrollY || document.documentElement.scrollTop;
 
-      if (scrollTopPosition > lastScrollTop) {
+      if (scrollTopPosition > lastScrollTop + threshold) {
         scrollDirection = 'down';
-      } else if (scrollTopPosition < lastScrollTop) {
+      } else if (scrollTopPosition < lastScrollTop - threshold) {
         scrollDirection = 'up';
       } else {
         return;
@@ -44,7 +54,9 @@ const MainPageSlider = () => {
 
       lastScrollTop = scrollTopPosition <= 0 ? 0 : scrollTopPosition;
 
-      changeSlide(scrollDirection, isMobile);
+      console.log(scrollDirection);
+
+      changeIndex(scrollDirection);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -54,22 +66,60 @@ const MainPageSlider = () => {
     };
   }, []);
 
+  useEffect(() => {
+    let height;
+    const slideElement = containerRef.current;
+    if (slideElement) {
+      const style = window.getComputedStyle(slideElement);
+      height = parseInt(style.height);
+    }
+
+    let targetScrollPosition = slideIndex * height!;
+
+    const animateScroll = (targetScrollPosition: number) => {
+      const startTime = performance.now();
+      const endTime = startTime + 700;
+
+      const step = (timestamp: number) => {
+        const progress = Math.min(
+          (timestamp - startTime) / (endTime - startTime),
+          1
+        );
+        window.scrollTo(
+          0,
+          (1 - progress) * window.scrollY + progress * targetScrollPosition
+        );
+
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+
+      window.requestAnimationFrame(step);
+    };
+
+    animateScroll(targetScrollPosition);
+  }, [slideIndex]);
+
   const slideOne = (
     <div
-      className={`flex justify-center w-full slide-height items-center 
+      ref={containerRef}
+      className={`flex justify-center w-full ${slideHeight} items-center relative
       `}
     >
       <h1
-        className='font-extrabold indent-[0.6em] text-center  
-text-[9rem] text-white tracking-[0.8em]'
+        className='
+        text-5xl tracking-[0.25em] mb-5
+        font-extrabold indent-[0.6em] text-center  
+sm:text-[9rem] text-white sm:tracking-[0.8em] '
       >
         SISLEY
       </h1>
       <button
         onClick={() => {
-          changeSlide('down', isMobile);
+          changeIndex('down');
         }}
-        className='absolute bottom-32 left-1/2'
+        className='absolute bottom-32 left-1/2 -translate-x-[50%]'
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -90,17 +140,14 @@ text-[9rem] text-white tracking-[0.8em]'
   );
 
   return (
-    <div className={'w-full overflow-hidden slide-height relative'}>
-      <div
-        className='slide-height w-full transition-all duration-500 ease-in-out'
-        style={{ transform: `translateY(-${slideIndex * 100}%)` }}
-      >
+    <div className={'w-full '}>
+      <div className='w-full '>
         {slideOne}
         <div
-          className={`slide-height w-full grid sm:grid-cols-2 
-        transition-all duration-500 ease-in-out`}
+          className={` w-full grid sm:grid-cols-2 
+        `}
         >
-          <div className='relative group'>
+          <div className={`relative group ${slideHeight}`}>
             <Image src={'/home_crop_01.jpg'} fill alt='home_man' />
             <div
               className='absolute top-0 w-full h-full bg-opacity-50 bg-black flex sm:hidden items-center 
@@ -114,7 +161,7 @@ text-[9rem] text-white tracking-[0.8em]'
               </Link>
             </div>
           </div>
-          <div className='relative group'>
+          <div className={`relative group ${slideHeight}`}>
             <Image src={'/home_crop_02.jpg'} fill alt='home_woman' />
             <div
               className='absolute top-0 w-full h-full bg-opacity-50 bg-black flex sm:hidden items-center 
