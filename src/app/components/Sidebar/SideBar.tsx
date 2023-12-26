@@ -4,8 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import SideBarMain from './SideBarMain';
 import SideBarMan from './SideBarMan';
 import { useOnclickOutside } from '@/utils/hooks/useOnClickOutside';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 export enum MenuState {
   Main = 'main',
@@ -18,6 +17,7 @@ const SideBar = () => {
   const [menuState, setMenuState] = useState(MenuState.Main);
 
   const router = useRouter();
+  const pathname = usePathname();
 
   const changeMenuState = (state: MenuState) => {
     setMenuState(state);
@@ -34,6 +34,7 @@ const SideBar = () => {
   return (
     <div ref={sideBar}>
       <button
+        className={pathname === '/' ? 'text-white' : 'text-black'}
         onClick={() => {
           setShowSideBar(true);
         }}

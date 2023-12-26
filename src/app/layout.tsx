@@ -24,7 +24,6 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <CartGetter>
-            <Navbar />
             {children}
             <Footer />
             <BottomNavbar />
