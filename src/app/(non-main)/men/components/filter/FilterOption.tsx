@@ -65,7 +65,7 @@ const FilterOption = ({ turnOff }: { turnOff: () => void }) => {
   return (
     <div>
       <div
-        className='w-full sm:w-[400px] bg-white border-2 
+        className=' w-screen sm:w-[400px] bg-white border-2 
       border-color-greyish p-[10px]'
       >
         <div className='flex justify-between mb-5'>

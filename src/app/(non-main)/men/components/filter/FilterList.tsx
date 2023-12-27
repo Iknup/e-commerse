@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import FilterOption from './FilterOption';
+import UpAnimation from '@/app/components/Animation/UpAnimation';
 
 type Props = {
   categories: string[];
@@ -46,12 +47,17 @@ const FilterList = ({ categories }: Props) => {
         Filtro
       </button>
       {showFilter && (
-        <div className='z-50 fixed bottom-0 sm:absolute sm:top-12 sm:right-0'>
-          <FilterOption
-            turnOff={() => {
-              setShowFilter(false);
-            }}
-          />
+        <div
+          className='z-50 fixed right-1/2 translate-x-1/2 bottom-0 sm:absolute 
+        sm:top-12 sm:right-0 sm:translate-x-0'
+        >
+          <UpAnimation>
+            <FilterOption
+              turnOff={() => {
+                setShowFilter(false);
+              }}
+            />
+          </UpAnimation>
         </div>
       )}
     </div>
