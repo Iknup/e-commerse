@@ -172,7 +172,7 @@ sm:text-[9rem] text-white sm:tracking-[0.8em] '
                 handleScrollOnClick(slideOneRef);
               }}
               className='absolute left-1/2 -translate-x-1/2 
-              bottom-5 sm:bottom-3'
+              bottom-32'
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
