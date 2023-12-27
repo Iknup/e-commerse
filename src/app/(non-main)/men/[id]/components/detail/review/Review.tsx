@@ -1,6 +1,7 @@
 import { Item } from '@/utils/interfaces';
 import ReviewPercentageBar from './ReviewPercentageBar';
 import ReviewInput from './ReviewInput';
+import ReviewBox from './ReviewBox';
 
 type Review = Item['review'];
 
@@ -89,15 +90,13 @@ const Review = ({ reviews, prodId }: Props) => {
 
   const reviewText = reviews!.map((review) => {
     return (
-      <div key={review.id} id={review.id} className='flex'>
-        <div className='text-lg mr-5 text-center'>{review.rating}/5</div>
-        <div>
-          <h1 className='text-lg mb-2 font-semibold'>{review.user}</h1>
-          <p className='long-description max-h-20 overflow-hidden'>
-            {review.review}
-          </p>
-        </div>
-      </div>
+      <ReviewBox
+        key={review.id}
+        id={review.id}
+        user={review.user}
+        rating={review.rating}
+        review={review.review}
+      />
     );
   });
 
