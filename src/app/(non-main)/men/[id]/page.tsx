@@ -3,7 +3,7 @@ import Image from 'next/image';
 import RecommendItem from './components/RecommendItems';
 import { DUMMY_SHORTS } from '@/dummy_data/shorts';
 import ProductDetail from '@/app/components/ProductDetail';
-import Review from './components/detail/Review';
+import Review from './components/detail/review/Review';
 
 const getProductDetail = (id: string) => {
   const product = DUMMY_SHORTS.find((short) => short.id === id);
