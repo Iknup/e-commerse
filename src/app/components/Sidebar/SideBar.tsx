@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SideBarMain from './SideBarMain';
 import SideBarMan from './SideBarMan';
@@ -18,6 +18,19 @@ const SideBar = () => {
 
   const router = useRouter();
   const pathname = usePathname();
+
+  useEffect(() => {
+    let path;
+
+    if (pathname === '/men') {
+      path = MenuState.Men;
+    } else if (pathname === '/women') {
+      path = MenuState.Women;
+    } else {
+      path = MenuState.Main;
+    }
+    setMenuState(path);
+  }, []);
 
   const changeMenuState = (state: MenuState) => {
     setMenuState(state);

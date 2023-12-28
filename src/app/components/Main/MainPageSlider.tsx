@@ -51,7 +51,7 @@ sm:text-[9rem] text-white sm:tracking-[0.8em] '
         onClick={() => {
           handleScrollOnClick(slideTwoRef);
         }}
-        className='absolute bottom-5 sm:bottom-32 left-1/2 -translate-x-[50%]'
+        className='absolute bottom-[15%] sm:bottom-[10%] left-1/2 -translate-x-[50%]'
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -103,7 +103,7 @@ sm:text-[9rem] text-white sm:tracking-[0.8em] '
                 onClick={() => {
                   handleScrollOnClick(slideThreeRef);
                 }}
-                className='absolute bottom-5 sm:bottom-3 left-1/2 -translate-x-[50%]'
+                className='absolute bottom-[15%] sm:bottom-3 left-1/2 -translate-x-[50%]'
               >
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -145,7 +145,7 @@ sm:text-[9rem] text-white sm:tracking-[0.8em] '
                   onClick={() => {
                     handleScrollOnClick(slideOneRef);
                   }}
-                  className='absolute left-1/2 -translate-x-1/2 bottom-5 
+                  className='absolute left-1/2 -translate-x-1/2 bottom-[15%] 
                   sm:bottom-3'
                 >
                   <svg
@@ -172,7 +172,7 @@ sm:text-[9rem] text-white sm:tracking-[0.8em] '
                 handleScrollOnClick(slideOneRef);
               }}
               className='absolute left-1/2 -translate-x-1/2 
-              bottom-32'
+              bottom-[10%]'
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'

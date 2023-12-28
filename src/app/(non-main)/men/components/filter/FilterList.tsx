@@ -4,6 +4,8 @@ import { useRouter } from 'next/navigation';
 import FilterOption from './FilterOption';
 import UpAnimation from '@/app/components/Animation/UpAnimation';
 import { AnimatePresence } from 'framer-motion';
+import FilterOverline from './FilterOverline';
+import Category from './Category';
 
 type Props = {
   categories: string[];
@@ -15,28 +17,22 @@ const FilterList = ({ categories }: Props) => {
   const router = useRouter();
 
   const filters = categories.map((category, i) => {
-    let buttonStyle = 'w-1/3 text-2xl font-semibold whitespace-nowrap';
-    if (filterState === i) {
-      buttonStyle = buttonStyle + ' overline';
-    }
-
     return (
-      <button
+      <Category
+        isActive={filterState === i}
         key={i}
-        className={buttonStyle}
+        category={category}
         onClick={() => {
           setFilterState(i);
           router.push(`?category=${category}`);
         }}
-      >
-        {category}
-      </button>
+      />
     );
   });
 
   return (
-    <div className='flex justify-between relative'>
-      <div className='hidden sm:flex space-x-2 gap-x-20 overflow-auto mt-5 mb-8'>
+    <div className='flex justify-between relative items-center'>
+      <div className='flex space-x-2  gap-x-4 sm:gap-x-20 no-scrollbar overflow-auto mt-3 mb-8'>
         {filters}
       </div>
       <button

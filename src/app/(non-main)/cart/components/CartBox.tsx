@@ -13,7 +13,7 @@ const CartBox = () => {
 
     return (
       <>
-        <div className='flex mb-3'>
+        <div className='flex mb-8'>
           <p>Precio Total:</p>
           <p className='font-bold'>{totalPrice.toFixed(2)}$</p>
         </div>

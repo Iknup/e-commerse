@@ -38,7 +38,7 @@ const BottomCartBox = () => {
   }
 
   return (
-    <div className={`z-50 w-80 bg-white flex flex-col`}>
+    <div className={`z-50 w-80 bg-[#ffffff] flex flex-col`}>
       {content}
       <Link
         href={'/cart'}

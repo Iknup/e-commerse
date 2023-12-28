@@ -46,14 +46,15 @@ const BottomCartButton = () => {
       {showCart && cartItems.length > 0 && (
         <Modal>
           <div
-            className='fixed z-50 shadow-modal-box'
+            className='fixed z-50 shadow-modal-box '
             style={{ bottom: 100, left: rectLeft }}
           >
             <button
               onClick={() => {
                 setShowCart(false);
               }}
-              className='w-full text-center bg-gray-100 text-[#bfbfbf]             '
+              className='w-full bg-white text-center 
+              text-[#bfbfbf] '
             >
               ▼
             </button>

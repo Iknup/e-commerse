@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react';
 
 export default function useMediaQuery(query: string) {
+  // const [matches, setMatches] = useState<boolean>(false);
+
+  // useEffect(() => {
+  //   setMatches(window.innerWidth > 640);
+  // }, [matches, query]);
+
   const [matches, setMatches] = useState<boolean>(false);
 
   useEffect(() => {
     const media = window.matchMedia(query);
-    if (media.matches !== matches) {
-      setMatches(media.matches);
-    }
+    setMatches(media.matches);
 
     const listener = () => {
       setMatches(media.matches);
@@ -26,7 +30,7 @@ export default function useMediaQuery(query: string) {
         media.removeListener(listener);
       }
     };
-  }, [matches, query]);
+  }, [query]);
 
   return matches;
 }

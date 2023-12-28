@@ -25,7 +25,7 @@ const Page = () => {
           />
         </div>
         <div className='max-w-5xl absolute bottom-3 left-3 text-3xl font-bold'>
-          Men&apos;s <br /> Lorem ipsum
+          Men&apos;s <br /> SISLEY
         </div>
       </div>
       <div className='max-w-7xl mx-auto px-2'>
